@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.3"
+  },
+  "name": "ebisu_website",
+  "version": "1.0.0",
+  "main": "app.js",
+  "devDependencies": {
+    "eslint": "^8.10.0",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.5.1"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "devStart": "nodemon app.js"
+  },
+  "author": "Alex Minculescu",
+  "license": "ISC",
+  "description": "Japanese Online Store"
+}
