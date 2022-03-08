@@ -15,8 +15,261 @@
     />
 
     <title>Ebisu</title>
+
+    <!-- Meta -->
+    <meta charset="UTF-8" />
+    <meta name="author" content="Alexandru Minculescu" />
+    <meta name="viewport" content="width=device-width, intial-scale=1.0" />
+
+    <!-- Favicon -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/images/logo/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/images/logo/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/images/logo/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/assets/images/logo/favicon/site.webmanifest" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/assets/css/main.css" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <h1>Ebisu website</h1>
+    <header>
+      <div class="header">
+        <div class="header__container-left">
+          <!-- Nav bar -->
+          <div class="header__menu">
+            <img
+              class="icon header__menu__icon--mobile"
+              src="/assets/images/icons/hamburger-menu.png"
+              alt="Mobile menu icon"
+            />
+            <nav class="header__menu__nav"></nav>
+          </div>
+
+          <!-- Logo -->
+          <img
+            class="icon header__icon header__icon--logo"
+            src="/assets/images/logo/logo-512px.png"
+            alt="Logo image"
+          />
+
+          <!-- Title -->
+          <h1 class="header__title">Ebisu</h1>
+        </div>
+
+        <div class="header__container-right">
+          <img
+            src="/assets/images/icons/search.png"
+            alt="Search icon"
+            class="icon header__icon header__icon--utility"
+          />
+          <img
+            src="/assets/images/icons/cart.png"
+            alt="Shopping Cart icon"
+            class="icon header__icon header__icon--utility"
+          />
+          <img
+            src="/assets/images/icons/account.png"
+            alt="Account icon"
+            class="icon header__icon header__icon--utility"
+          />
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="main__container">
+        <div class="cover">
+          <img
+            src="/assets/images/cover.jpg"
+            alt="Image of a Japan Garden"
+            class="img cover__img"
+          />
+
+          <h1 class="cover__title">Ebisu</h1>
+
+          <div class="cover__subtitle-wrapper">
+            <div class="cover__subtitle">
+              Your favorite japanese online store
+            </div>
+          </div>
+        </div>
+
+        <div class="popular-products">
+          <h2 class="popular-products__title popularproducts__title--color">
+            Popular
+          </h2>
+          <h2 class="popular-products__title">Products</h2>
+          <div class="popular-products__cards-container">
+            <a class="popular-products__card__link" href="/">
+              <div class="card popular-products__card">
+                <img
+                  src="/assets/images/products/pop1.jpg"
+                  alt="TODO"
+                  class="img popular-products__card__img"
+                />
+                <div class="popular-products__card__title">Clothing</div>
+              </div>
+            </a>
+            <a class="popular-products__card__link" href="/">
+              <div class="card popular-products__card">
+                <img
+                  src="/assets/images/products/pop2.jpg"
+                  alt="TODO"
+                  class="img popular-products__card__img"
+                />
+                <div class="popular-products__card__title">Masks</div>
+              </div>
+            </a>
+            <a class="popular-products__card__link" href="/">
+              <div class="card popular-products__card">
+                <img
+                  src="/assets/images/products/pop3.jpg"
+                  alt="TODO"
+                  class="img popular-products__card__img"
+                />
+                <div class="popular-products__card__title">Sweets</div>
+              </div>
+            </a>
+            <a class="popular-products__card__link" href="/">
+              <div class="card popular-products__card">
+                <img
+                  src="/assets/images/products/pop4.jpeg"
+                  alt="TODO"
+                  class="img popular-products__card__img"
+                />
+                <div class="popular-products__card__title">Manga</div>
+              </div>
+            </a>
+          </div>
+
+          <button class="btn btn--full popular-products__btn">
+            All Products ->
+          </button>
+        </div>
+
+        <div class="promotions">
+          <h2 class="promotions__title promotions__title--color">Promotions</h2>
+          <div class="promotions__cards-container">
+            <div class="card promotions__card">
+              <img
+                src="/assets/images/products/pop1.jpg"
+                alt="TODO"
+                class="img promotions__card__img"
+              />
+              <div class="promotions__card__subtitle">Subtitle</div>
+              <div class="promotions__card__title">Title</div>
+              <div class="promotions__card__price-tag">Price</div>
+              <button class="btn btn--transparent promotions__card__btn">
+                <img
+                  class="promotions__card__btn__img"
+                  src="/assets/images/icons/cart-color.png"
+                  alt="Cart icon"
+                />
+                <span class="promotions__card__btn__text">Add to cart</span>
+              </button>
+            </div>
+            <div class="card promotions__card">
+              <img
+                src="/assets/images/products/pop1.jpg"
+                alt="TODO"
+                class="img promotions__card__img"
+              />
+              <div class="promotions__card__subtitle">Subtitle</div>
+              <div class="promotions__card__title">Title</div>
+              <div class="promotions__card__price-tag">Price</div>
+              <button class="btn btn--transparent promotions__card__btn">
+                <img
+                  class="promotions__card__btn__img"
+                  src="/assets/images/icons/cart-color.png"
+                  alt="Cart icon"
+                />
+                <span class="promotions__card__btn__text">Add to cart</span>
+              </button>
+            </div>
+            <div class="card promotions__card">
+              <img
+                src="/assets/images/products/pop1.jpg"
+                alt="TODO"
+                class="img promotions__card__img"
+              />
+              <div class="promotions__card__subtitle">Subtitle</div>
+              <div class="promotions__card__title">Title</div>
+              <div class="promotions__card__price-tag">Price</div>
+              <button class="btn btn--transparent promotions__card__btn">
+                <img
+                  class="promotions__card__btn__img"
+                  src="/assets/images/icons/cart-color.png"
+                  alt="Cart icon"
+                />
+                <span class="promotions__card__btn__text">Add to cart</span>
+              </button>
+            </div>
+            <div class="card promotions__card">
+              <img
+                src="/assets/images/products/pop1.jpg"
+                alt="TODO"
+                class="img promotions__card__img"
+              />
+              <div class="promotions__card__subtitle">Subtitle</div>
+              <div class="promotions__card__title">Title</div>
+              <div class="promotions__card__price-tag">Price</div>
+              <button class="btn btn--transparent promotions__card__btn">
+                <img
+                  class="promotions__card__btn__img"
+                  src="/assets/images/icons/cart-color.png"
+                  alt="Cart icon"
+                />
+                <span class="promotions__card__btn__text">Add to cart</span>
+              </button>
+            </div>
+          </div>
+
+          <button class="btn btn--full promotions__btn">All Products -></button>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <!-- <p class="footer-watermark">
+        Copyright &copy; <br />
+        Minculescu Alexandru
+      </p>
+
+      <section class="footer-contact">
+        <h2>Contact</h2>
+        <address>Sakura Street, no. 23, Bucharest, sector 3, Romania</address>
+        <div>Phone no: <a href="tel:+4073555432">+4073 555 432</a></div>
+        <div>
+          Email:
+          <a href="mailto:ebisu_store@gmail.com">ebisu_store@gmail.com</a>
+        </div>
+      </section>
+
+      <small
+        >Copyright &copy; Ebisu
+        <time datetime="2021-10-19">19 October 2021</time>
+      </small> -->
+    </footer>
   </body>
 </html>
