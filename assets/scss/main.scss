@@ -1,8 +1,16 @@
+/*
+ *  Color Variables  
+ */
 $light-shades-color: #f1f1ea;
 $light-accent-color: #5ebb69;
 $primary-color: #67bd11;
 $dark-accent-color: #d9772f;
 $dark-shades-color: #1f2724;
+
+/*
+ *  Arhitecture Variables  
+ */
+$menu-opacity: 0.97;
 
 // CSS Resets
 *,
@@ -31,7 +39,209 @@ $hearder-padding-top: 15px;
 $hearder-padding-bottom: 12px;
 $logo-icon-width: 50px;
 
-// Header
+/*
+ *  Menu  
+ */
+.header__menu {
+  // Menu button (hamburger)
+  &__btn {
+    position: relative;
+    height: 20px;
+    width: 28px;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+    margin-right: 12px;
+    margin-left: 12px;
+
+    &__icon {
+      position: absolute;
+      z-index: 100;
+      left: 0.5rem;
+      top: 0.5rem;
+      width: 28px;
+      height: 3px;
+      background: $dark-shades-color;
+      transition: all 0.5s ease-in-out;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: -8px;
+        width: 28px;
+        height: 3px;
+        background: $dark-shades-color;
+        transition: all 0.5s ease-in-out;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 8px;
+        width: 24px;
+        height: 3px;
+        background: $dark-shades-color;
+        transition: all 0.5s ease-in-out;
+      }
+
+      &.open {
+        transform: rotate(720deg);
+        background: transparent;
+
+        &::before {
+          transform: rotate(45deg) translate(5px, 8px);
+        }
+
+        &::after {
+          width: 28px;
+          transform: rotate(-45deg) translate(3px, -7px);
+        }
+      }
+    }
+  }
+
+  // Menu nav, lists, sublists
+  &__nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    opacity: $menu-opacity;
+
+    visibility: hidden;
+    transition: all 0.5s ease-in-out;
+
+    .list {
+      display: flex;
+      flex-flow: column wrap;
+      list-style-type: none;
+      cursor: pointer;
+    }
+
+    &.open {
+      visibility: visible;
+    }
+
+    &__list {
+      height: 100vh;
+      padding-top: 90px;
+      padding-left: 5vh;
+      background: $light-shades-color;
+      opacity: $menu-opacity;
+      overflow: hidden;
+
+      transform: translateY(-100%);
+      transition: all 0.5s ease-in-out;
+
+      &.open {
+        transform: translateY(0);
+      }
+    }
+
+    &__sublist {
+      display: none;
+      animation: hideSubmenu 500ms ease both;
+
+      &.open {
+        animation: showSubmenu 500ms ease both;
+      }
+    }
+
+    @keyframes showSubmenu {
+      from {
+        transform: translateX(-100%);
+        opacity: 0;
+        height: 0;
+        // visibility: hidden;
+      }
+
+      to {
+        opacity: 100%;
+        transform: translateX(0);
+        height: 100%;
+        // visibility: visible;
+      }
+    }
+    @keyframes hideSubmenu {
+      from {
+        opacity: 100%;
+        transform: translateX(0);
+        height: 100%;
+        // visibility: visible;
+      }
+      to {
+        transform: translateX(-100%);
+        opacity: 0;
+        height: 0;
+        // visibility: hidden;
+      }
+    }
+  }
+
+  // Lists items
+  &__nav__list__item {
+    transform: translateY(-100vh);
+    transition: all 500ms ease-in-out;
+
+    padding-bottom: 0.75em;
+
+    &.open {
+      transform: translateY(0);
+    }
+
+    &.expand {
+      .header__menu__nav__list__item__content {
+        &__text {
+          color: $light-accent-color;
+        }
+        &__icon {
+          transform: rotate(90deg);
+        }
+      }
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: row;
+
+      align-items: center;
+
+      &__text {
+        font-size: 24px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+
+        &:hover {
+          color: $light-accent-color;
+        }
+      }
+
+      &__icon {
+        transition: transform 200ms linear;
+        height: 1.5em;
+      }
+    }
+  }
+
+  // Sublists items
+  &__nav__sublist__item {
+    &__content {
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+
+      padding-top: 0.2em;
+      padding-bottom: 0.2em;
+
+      &:hover {
+        color: $dark-accent-color;
+      }
+    }
+  }
+}
+
+/*
+ *  Header  
+ */
 .header {
   display: flex;
   flex-direction: row;
@@ -57,7 +267,6 @@ $logo-icon-width: 50px;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    margin-left: 12px;
   }
 
   &__container-right {
@@ -96,7 +305,9 @@ $logo-icon-width: 50px;
   }
 }
 
-// Main
+/*
+ *  Main  
+ */
 .main__container {
   margin-top: $hearder-padding-top + $hearder-padding-bottom + $logo-icon-width;
 
@@ -353,6 +564,9 @@ $logo-icon-width: 50px;
   }
 }
 
+/*
+ *  Footer  
+ */
 footer {
   height: 500px;
   background-color: #5ebb69;
