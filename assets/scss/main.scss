@@ -13,6 +13,16 @@ $dark-shades-color: #1f2724;
  */
 $menu-opacity: 0.97;
 
+/*
+ *  Mixins
+ */
+@mixin absolute_centering {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 // CSS Resets
 *,
 ::before,
@@ -325,6 +335,17 @@ $logo-icon-width: 50px;
     color: $light-shades-color;
   }
 
+  .section__title {
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .section__title--color {
+    @extend .section__title;
+    padding-top: 2rem;
+    color: $light-accent-color;
+  }
+
   .cover {
     display: block;
     position: relative;
@@ -373,17 +394,6 @@ $logo-icon-width: 50px;
 
   .popular-products {
     text-align: center;
-
-    &__title {
-      text-align: center;
-      text-transform: uppercase;
-    }
-
-    &__title--color {
-      @extend .popular-products__title;
-      padding-top: 2rem;
-      color: $light-accent-color;
-    }
 
     &__cards-container {
       display: grid;
@@ -464,16 +474,6 @@ $logo-icon-width: 50px;
     text-align: center;
 
     margin-top: 2rem;
-
-    &__title {
-      text-align: center;
-      text-transform: uppercase;
-    }
-    &__title--color {
-      @extend .promotions__title;
-      padding-top: 2rem;
-      color: $light-accent-color;
-    }
 
     &__cards-container-wrapper {
       position: relative;
@@ -611,6 +611,70 @@ $logo-icon-width: 50px;
 
     &__btn {
       margin-top: 1rem;
+    }
+  }
+
+  .categories {
+    margin-top: 2rem;
+
+    &__cards-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    &__card {
+      position: relative;
+      text-align: center;
+      width: 90%;
+      height: 120px;
+
+      transition: all 400ms ease-in-out;
+
+      &__bg {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $dark-shades-color;
+        opacity: 0.3;
+        z-index: 1;
+      }
+
+      &__title {
+        z-index: 10;
+
+        color: $light-shades-color;
+        font-weight: 600;
+        font-size: 24px;
+        text-transform: capitalize;
+        letter-spacing: 0.2em;
+
+        @include absolute_centering();
+      }
+
+      &__btn {
+        z-index: 10;
+
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+
+        cursor: pointer;
+      }
+
+      &:hover {
+        width: 95%;
+        height: 145px;
+      }
     }
   }
 }

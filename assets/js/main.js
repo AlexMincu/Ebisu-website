@@ -88,3 +88,14 @@ const promotionsBtn = document.querySelector('.promotions__btn');
 promotionsBtn.addEventListener('click', function () {
   document.location.href = '/promos';
 });
+
+const categoriesCards = document.querySelectorAll('.categories__card');
+
+categoriesCards.forEach((item) => {
+  console.log(item.childNodes);
+  // Add event listeners to all category cards buttons
+  const btn = item.childNodes[5];
+  btn.addEventListener('click', () => {
+    alert(`TO-DO Button Redirect of ${item.childNodes[3].innerText}`);
+  });
+});
