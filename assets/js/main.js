@@ -56,10 +56,35 @@ for (let i = 0; i < navItems.length; i++) {
   });
 }
 
-// function toggleSubmenu() {
-//   //   if (!showSubmenu) {
-//   submenuList.forEach((item) => item.classList.add('open'));
-//   //   } else {
-//   // submenuList.remove('open');
-//   //   }
-// }
+const popularProductsBtn = document.querySelector('.popular-products__btn');
+
+popularProductsBtn.addEventListener('click', function () {
+  document.location.href = '/products';
+});
+
+const promoCardsContainer = document.querySelector(
+  '.promotions__cards-container-wrapper'
+);
+const prevBtn = document.querySelector(
+  '.promotions__cards-container-wrapper__btn--prev'
+);
+const nextBtn = document.querySelector(
+  '.promotions__cards-container-wrapper__btn--next'
+);
+
+const containerDimensions = promoCardsContainer.getBoundingClientRect();
+const containerWidth = containerDimensions.width;
+
+nextBtn.addEventListener('click', () => {
+  promoCardsContainer.scrollLeft += containerWidth;
+});
+
+prevBtn.addEventListener('click', () => {
+  promoCardsContainer.scrollLeft -= containerWidth;
+});
+
+const promotionsBtn = document.querySelector('.promotions__btn');
+
+promotionsBtn.addEventListener('click', function () {
+  document.location.href = '/promos';
+});

@@ -61,12 +61,7 @@
         <div class="header__container-left">
           <!-- Nav bar -->
           <div class="header__menu">
-            <!-- <img
-              class="icon header__menu__icon--mobile"
-              src="/assets/images/icons/hamburger-menu.png"
-              alt="Mobile menu icon"
-            /> -->
-            <div class="header__menu__btn">
+            <div tabindex="0" class="header__menu__btn">
               <span class="header__menu__btn__icon"></span>
             </div>
             <nav class="header__menu__nav">
@@ -222,7 +217,7 @@
 
     <main>
       <div class="main__container">
-        <div class="cover">
+        <section class="cover">
           <img
             src="/assets/images/cover.jpg"
             alt="Image of a Japan Garden"
@@ -236,9 +231,9 @@
               Your favorite japanese online store
             </div>
           </div>
-        </div>
+        </section>
 
-        <div class="popular-products">
+        <section class="popular-products">
           <h2 class="popular-products__title popular-products__title--color">
             Popular
           </h2>
@@ -287,89 +282,180 @@
           </div>
 
           <button class="btn btn--full popular-products__btn">
-            All Products ->
+            All Products
           </button>
-        </div>
+        </section>
 
-        <div class="promotions">
+        <section class="promotions">
           <h2 class="promotions__title promotions__title--color">Promotions</h2>
-          <div class="promotions__cards-container">
-            <div class="card promotions__card">
-              <img
-                src="/assets/images/products/pop1.jpg"
-                alt="TODO"
-                class="img promotions__card__img"
-              />
-              <div class="promotions__card__subtitle">Subtitle</div>
-              <div class="promotions__card__title">Title</div>
-              <div class="promotions__card__price-tag">Price</div>
-              <button class="btn btn--transparent promotions__card__btn">
+
+          <div
+            class="promotions__cards-container-wrapper__btn promotions__cards-container-wrapper__btn--prev"
+          >
+            <img
+              src="/assets/images/icons/arrow.png"
+              alt="Previous button image"
+            />
+          </div>
+
+          <div
+            class="promotions__cards-container-wrapper__btn promotions__cards-container-wrapper__btn--next"
+          >
+            <img src="/assets/images/icons/arrow.png" alt="Next button image" />
+          </div>
+          <div class="promotions__cards-container-wrapper">
+            <div class="promotions__cards-container">
+              <div class="card promotions__card">
                 <img
-                  class="promotions__card__btn__img"
-                  src="/assets/images/icons/cart-color.png"
-                  alt="Cart icon"
+                  src="/assets/images/products/pop1.jpg"
+                  alt="TODO"
+                  class="img promotions__card__img"
                 />
-                <span class="promotions__card__btn__text">Add to cart</span>
-              </button>
-            </div>
-            <div class="card promotions__card">
-              <img
-                src="/assets/images/products/pop1.jpg"
-                alt="TODO"
-                class="img promotions__card__img"
-              />
-              <div class="promotions__card__subtitle">Subtitle</div>
-              <div class="promotions__card__title">Title</div>
-              <div class="promotions__card__price-tag">Price</div>
-              <button class="btn btn--transparent promotions__card__btn">
+                <div class="promotions__card__subtitle">Subtitle</div>
+                <div class="promotions__card__title">Title</div>
+                <div class="promotions__card__price-tag">Price</div>
+                <button class="btn btn--transparent promotions__card__btn">
+                  <img
+                    class="promotions__card__btn__img"
+                    src="/assets/images/icons/cart-color.png"
+                    alt="Cart icon"
+                  />
+                  <span class="promotions__card__btn__text">Add to cart</span>
+                </button>
+              </div>
+              <div class="card promotions__card">
                 <img
-                  class="promotions__card__btn__img"
-                  src="/assets/images/icons/cart-color.png"
-                  alt="Cart icon"
+                  src="/assets/images/products/pop1.jpg"
+                  alt="TODO"
+                  class="img promotions__card__img"
                 />
-                <span class="promotions__card__btn__text">Add to cart</span>
-              </button>
-            </div>
-            <div class="card promotions__card">
-              <img
-                src="/assets/images/products/pop1.jpg"
-                alt="TODO"
-                class="img promotions__card__img"
-              />
-              <div class="promotions__card__subtitle">Subtitle</div>
-              <div class="promotions__card__title">Title</div>
-              <div class="promotions__card__price-tag">Price</div>
-              <button class="btn btn--transparent promotions__card__btn">
+                <div class="promotions__card__subtitle">Subtitle</div>
+                <div class="promotions__card__title">Title</div>
+                <div class="promotions__card__price-tag">Price</div>
+                <button class="btn btn--transparent promotions__card__btn">
+                  <img
+                    class="promotions__card__btn__img"
+                    src="/assets/images/icons/cart-color.png"
+                    alt="Cart icon"
+                  />
+                  <span class="promotions__card__btn__text">Add to cart</span>
+                </button>
+              </div>
+              <div class="card promotions__card">
                 <img
-                  class="promotions__card__btn__img"
-                  src="/assets/images/icons/cart-color.png"
-                  alt="Cart icon"
+                  src="/assets/images/products/pop1.jpg"
+                  alt="TODO"
+                  class="img promotions__card__img"
                 />
-                <span class="promotions__card__btn__text">Add to cart</span>
-              </button>
-            </div>
-            <div class="card promotions__card">
-              <img
-                src="/assets/images/products/pop1.jpg"
-                alt="TODO"
-                class="img promotions__card__img"
-              />
-              <div class="promotions__card__subtitle">Subtitle</div>
-              <div class="promotions__card__title">Title</div>
-              <div class="promotions__card__price-tag">Price</div>
-              <button class="btn btn--transparent promotions__card__btn">
+                <div class="promotions__card__subtitle">Subtitle</div>
+                <div class="promotions__card__title">Title</div>
+                <div class="promotions__card__price-tag">Price</div>
+                <button class="btn btn--transparent promotions__card__btn">
+                  <img
+                    class="promotions__card__btn__img"
+                    src="/assets/images/icons/cart-color.png"
+                    alt="Cart icon"
+                  />
+                  <span class="promotions__card__btn__text">Add to cart</span>
+                </button>
+              </div>
+              <div class="card promotions__card">
                 <img
-                  class="promotions__card__btn__img"
-                  src="/assets/images/icons/cart-color.png"
-                  alt="Cart icon"
+                  src="/assets/images/products/pop1.jpg"
+                  alt="TODO"
+                  class="img promotions__card__img"
                 />
-                <span class="promotions__card__btn__text">Add to cart</span>
-              </button>
+                <div class="promotions__card__subtitle">Subtitle</div>
+                <div class="promotions__card__title">Title</div>
+                <div class="promotions__card__price-tag">Price</div>
+                <button class="btn btn--transparent promotions__card__btn">
+                  <img
+                    class="promotions__card__btn__img"
+                    src="/assets/images/icons/cart-color.png"
+                    alt="Cart icon"
+                  />
+                  <span class="promotions__card__btn__text">Add to cart</span>
+                </button>
+              </div>
+              <div class="card promotions__card">
+                <img
+                  src="/assets/images/products/pop1.jpg"
+                  alt="TODO"
+                  class="img promotions__card__img"
+                />
+                <div class="promotions__card__subtitle">Subtitle</div>
+                <div class="promotions__card__title">Title</div>
+                <div class="promotions__card__price-tag">Price</div>
+                <button class="btn btn--transparent promotions__card__btn">
+                  <img
+                    class="promotions__card__btn__img"
+                    src="/assets/images/icons/cart-color.png"
+                    alt="Cart icon"
+                  />
+                  <span class="promotions__card__btn__text">Add to cart</span>
+                </button>
+              </div>
+              <div class="card promotions__card">
+                <img
+                  src="/assets/images/products/pop1.jpg"
+                  alt="TODO"
+                  class="img promotions__card__img"
+                />
+                <div class="promotions__card__subtitle">Subtitle</div>
+                <div class="promotions__card__title">Title</div>
+                <div class="promotions__card__price-tag">Price</div>
+                <button class="btn btn--transparent promotions__card__btn">
+                  <img
+                    class="promotions__card__btn__img"
+                    src="/assets/images/icons/cart-color.png"
+                    alt="Cart icon"
+                  />
+                  <span class="promotions__card__btn__text">Add to cart</span>
+                </button>
+              </div>
+              <div class="card promotions__card">
+                <img
+                  src="/assets/images/products/pop1.jpg"
+                  alt="TODO"
+                  class="img promotions__card__img"
+                />
+                <div class="promotions__card__subtitle">Subtitle</div>
+                <div class="promotions__card__title">Title</div>
+                <div class="promotions__card__price-tag">Price</div>
+                <button class="btn btn--transparent promotions__card__btn">
+                  <img
+                    class="promotions__card__btn__img"
+                    src="/assets/images/icons/cart-color.png"
+                    alt="Cart icon"
+                  />
+                  <span class="promotions__card__btn__text">Add to cart</span>
+                </button>
+              </div>
+              <div class="card promotions__card">
+                <img
+                  src="/assets/images/products/pop1.jpg"
+                  alt="TODO"
+                  class="img promotions__card__img"
+                />
+                <div class="promotions__card__subtitle">Subtitle</div>
+                <div class="promotions__card__title">Title</div>
+                <div class="promotions__card__price-tag">Price</div>
+                <button class="btn btn--transparent promotions__card__btn">
+                  <img
+                    class="promotions__card__btn__img"
+                    src="/assets/images/icons/cart-color.png"
+                    alt="Cart icon"
+                  />
+                  <span class="promotions__card__btn__text">Add to cart</span>
+                </button>
+              </div>
             </div>
           </div>
 
-          <button class="btn btn--full promotions__btn">All Products -></button>
-        </div>
+          <button class="btn btn--full promotions__btn">
+            Browse Promotions
+          </button>
+        </section>
       </div>
     </main>
 
