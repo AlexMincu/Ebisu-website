@@ -364,6 +364,10 @@ body {
   margin-top: 77px;
 }
 
+.main__container .btn {
+  text-transform: capitalize;
+}
+
 .main__container .btn--full {
   height: 2.5rem;
   padding-left: 2rem;
@@ -923,8 +927,120 @@ body {
   font-size: 14px;
 }
 
-.main__container .books-showcase__btn {
-  margin-top: 1rem;
+.main__container .articles {
+  text-align: center;
+}
+
+.main__container .articles__cards-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  margin-left: 25px;
+  margin-right: 25px;
+  gap: 30px 20px;
+}
+
+.main__container .articles__card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  overflow: hidden;
+  max-height: 600px;
+}
+
+.main__container .articles__card__img {
+  width: 100%;
+  max-height: 250px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 0px 0px 20px 20px;
+}
+
+.main__container .articles__card__title {
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+  color: #67bd11;
+  text-align: start;
+  margin: 10px 20px 0px 20px;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+          hyphens: auto;
+}
+
+.main__container .articles__card__published-date {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  color: #999999;
+  text-align: start;
+  margin-left: 20px;
+}
+
+.main__container .articles__card__description {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  color: #1f2724;
+  text-align: start;
+  margin: 10px 20px 0px 20px;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+          hyphens: auto;
+  overflow: hidden;
+}
+
+.main__container .articles__card__btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  border: none;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  color: #67bd11;
+  opacity: 0.5;
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+  cursor: pointer;
+}
+
+.main__container .articles__card__btn__img {
+  margin-left: 0.5em;
+  height: 15px;
+  opacity: 0.5;
+}
+
+.main__container .articles__card__btn:hover {
+  opacity: 1;
+}
+
+.main__container .articles__card__btn:hover__img {
+  opacity: 0.75;
+}
+
+.main__container .articles__btn {
+  margin-top: 2.5rem;
 }
 
 /*

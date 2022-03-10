@@ -1,3 +1,6 @@
+/*
+ *  Hamburger Menu
+ */
 const menuBtn = document.querySelector('.header__menu__btn');
 const menuIcon = document.querySelector('.header__menu__btn__icon');
 const nav = document.querySelector('.header__menu__nav');
@@ -53,10 +56,15 @@ for (let i = 0; i < navItems.length; i++) {
   });
 }
 
+/*
+ *  Popular Section
+ */
 const popularProductsBtn = document.querySelector('.popular-products__btn');
 
 popularProductsBtn.addEventListener('click', function () {
-  document.location.href = '/products';
+  alert(
+    `TODO Button Redirect to the Products Page with a filter for Most Popular Products`
+  );
 });
 
 /*
@@ -87,10 +95,22 @@ promoPrevBtn.addEventListener('click', () => {
   promoCardsContainer.scrollLeft -= promoContainerWidth;
 });
 
+const promotionsCardAddBtn = document.querySelectorAll(
+  '.promotions__card__btn'
+);
+
+promotionsCardAddBtn.forEach((item) => {
+  item.addEventListener('click', () => {
+    alert(`TODO Button Functionality to add to a cart`);
+  });
+});
+
 const promotionsBtn = document.querySelector('.promotions__btn');
 
 promotionsBtn.addEventListener('click', function () {
-  document.location.href = '/promos';
+  alert(
+    `TODO Button Redirect to the Products Page with a filter for Products in Promotions`
+  );
 });
 
 /*
@@ -102,7 +122,7 @@ categoriesCards.forEach((item) => {
   // Add event listeners to all category cards buttons
   const btn = item.childNodes[5];
   btn.addEventListener('click', () => {
-    alert(`TO-DO Button Redirect of ${item.childNodes[3].innerText}`);
+    alert(`TODO Button Redirect of ${item.childNodes[3].innerText}`);
   });
 });
 
@@ -137,5 +157,23 @@ booksPrevBtn.addEventListener('click', () => {
 const booksBtn = document.querySelector('.books-showcase__btn');
 
 booksBtn.addEventListener('click', function () {
-  document.location.href = '/books';
+  alert(`TODO Button Redirect to the Books & Manga Page`);
+});
+
+/*
+ *  Articles Section
+ */
+const articlesCardsBtn = document.querySelectorAll('.articles__card__btn');
+const articlesBtn = document.querySelector('.articles__btn');
+
+articlesCardsBtn.forEach((item) => {
+  item.addEventListener('click', () => {
+    alert(
+      `TODO Button Redirect of Article with title - ${item.parentElement.childNodes[3].innerText}`
+    );
+  });
+});
+
+articlesBtn.addEventListener('click', () => {
+  alert(`TODO Button Redirect to the Articles Page`);
 });
