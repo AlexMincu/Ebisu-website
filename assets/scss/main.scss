@@ -7,6 +7,7 @@ $light-accent-color: #5ebb69;
 $primary-color: #67bd11;
 $dark-accent-color: #d9772f;
 $dark-shades-color: #1f2724;
+$grayed-text-color: #999999;
 
 /*
  *  Arhitecture Variables  
@@ -320,6 +321,9 @@ $logo-icon-width: 50px;
   margin-top: $hearder-padding-top + $hearder-padding-bottom + $logo-icon-width;
 
   // Components
+  .btn {
+    text-transform: capitalize;
+  }
   .btn--full {
     height: 2.5rem;
     padding-left: 2rem;
@@ -824,9 +828,115 @@ $logo-icon-width: 50px;
         }
       }
     }
+  }
+
+  .articles {
+    text-align: center;
+    &__cards-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      margin-left: 25px;
+      margin-right: 25px;
+      gap: 30px 20px;
+    }
+
+    &__card {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      overflow: hidden;
+
+      max-height: 600px;
+
+      &__img {
+        width: 100%;
+        max-height: 250px;
+        object-fit: cover;
+        border-radius: 0px 0px 20px 20px;
+      }
+
+      &__title {
+        font-weight: 400;
+        font-style: normal;
+        font-size: 18px;
+        color: $primary-color;
+
+        text-align: start;
+
+        margin: 10px 20px 0px 20px;
+
+        word-wrap: break-word;
+        hyphens: auto;
+      }
+
+      &__published-date {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        color: $grayed-text-color;
+
+        text-align: start;
+
+        margin-left: 20px;
+      }
+
+      &__description {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 13px;
+        color: $dark-shades-color;
+
+        text-align: start;
+
+        margin: 10px 20px 0px 20px;
+
+        word-wrap: break-word;
+        hyphens: auto;
+        overflow: hidden;
+      }
+
+      &__btn {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        margin-top: auto;
+
+        border: none;
+
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        color: $primary-color;
+
+        opacity: 0.5;
+        transition: all 200ms ease-in-out;
+
+        cursor: pointer;
+
+        &__img {
+          margin-left: 0.5em;
+          height: 15px;
+          opacity: 0.5;
+        }
+
+        &:hover {
+          opacity: 1;
+
+          &__img {
+            opacity: 0.75;
+          }
+        }
+      }
+    }
 
     &__btn {
-      margin-top: 1rem;
+      margin-top: 2.5rem;
     }
   }
 }
