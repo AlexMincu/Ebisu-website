@@ -6,10 +6,7 @@ const navItems = document.querySelectorAll('.header__menu__nav__list__item');
 
 let showMenu = false;
 
-menuBtn.addEventListener('click', toggleMenu);
-
-function toggleMenu() {
-  console.log('clicking');
+menuBtn.addEventListener('click', () => {
   if (!showMenu) {
     menuIcon.classList.add('open');
     nav.classList.add('open');
@@ -25,7 +22,7 @@ function toggleMenu() {
 
     showMenu = false;
   }
-}
+});
 
 for (let i = 0; i < navItems.length; i++) {
   navItems[i].addEventListener('click', function () {
@@ -62,25 +59,32 @@ popularProductsBtn.addEventListener('click', function () {
   document.location.href = '/products';
 });
 
+/*
+ *  Promotions Section
+ */
 const promoCardsContainer = document.querySelector(
   '.promotions__cards-container-wrapper'
 );
-const prevBtn = document.querySelector(
+const promoPrevBtn = document.querySelector(
   '.promotions__cards-container-wrapper__btn--prev'
 );
-const nextBtn = document.querySelector(
+const promoNextBtn = document.querySelector(
   '.promotions__cards-container-wrapper__btn--next'
 );
 
-const containerDimensions = promoCardsContainer.getBoundingClientRect();
-const containerWidth = containerDimensions.width;
+/*
+ *  The width dimension comes from the current size on reloading the page
+ *    Fix - Get a live width dimension so the slider function works properly after resizing the page
+ */
+const promoContainerDimensions = promoCardsContainer.getBoundingClientRect();
+const promoContainerWidth = promoContainerDimensions.width;
 
-nextBtn.addEventListener('click', () => {
-  promoCardsContainer.scrollLeft += containerWidth;
+promoNextBtn.addEventListener('click', () => {
+  promoCardsContainer.scrollLeft += promoContainerWidth;
 });
 
-prevBtn.addEventListener('click', () => {
-  promoCardsContainer.scrollLeft -= containerWidth;
+promoPrevBtn.addEventListener('click', () => {
+  promoCardsContainer.scrollLeft -= promoContainerWidth;
 });
 
 const promotionsBtn = document.querySelector('.promotions__btn');
@@ -89,13 +93,49 @@ promotionsBtn.addEventListener('click', function () {
   document.location.href = '/promos';
 });
 
+/*
+ *  Categories Section
+ */
 const categoriesCards = document.querySelectorAll('.categories__card');
 
 categoriesCards.forEach((item) => {
-  console.log(item.childNodes);
   // Add event listeners to all category cards buttons
   const btn = item.childNodes[5];
   btn.addEventListener('click', () => {
     alert(`TO-DO Button Redirect of ${item.childNodes[3].innerText}`);
   });
+});
+
+/*
+ *  Books-showcase Section
+ */
+const booksCardsContainer = document.querySelector(
+  '.books-showcase__cards-container-wrapper'
+);
+const booksPrevBtn = document.querySelector(
+  '.books-showcase__cards-container-wrapper__btn--prev'
+);
+const booksNextBtn = document.querySelector(
+  '.books-showcase__cards-container-wrapper__btn--next'
+);
+
+/*
+ *  The width dimension comes from the current size on reloading the page
+ *    Fix - Get a live width dimension so the slider function works properly after resizing the page
+ */
+const booksContainerDimensions = booksCardsContainer.getBoundingClientRect();
+const booksContainerWidth = booksContainerDimensions.width;
+
+booksNextBtn.addEventListener('click', () => {
+  booksCardsContainer.scrollLeft += booksContainerWidth;
+});
+
+booksPrevBtn.addEventListener('click', () => {
+  booksCardsContainer.scrollLeft -= booksContainerWidth;
+});
+
+const booksBtn = document.querySelector('.books-showcase__btn');
+
+booksBtn.addEventListener('click', function () {
+  document.location.href = '/books';
 });
