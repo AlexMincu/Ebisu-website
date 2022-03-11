@@ -46,11 +46,6 @@ body {
   cursor: pointer;
 }
 
-// Useful global variables - TODO (might need to change this later)
-$hearder-padding-top: 15px;
-$hearder-padding-bottom: 12px;
-$logo-icon-width: 50px;
-
 /*
  *  Menu  
  */
@@ -267,10 +262,10 @@ $logo-icon-width: 50px;
   background-color: $light-shades-color;
   z-index: 1000;
 
-  padding-top: $hearder-padding-top;
-  padding-bottom: $hearder-padding-bottom;
+  padding-top: 15px;
+  padding-bottom: 12px;
 
-  height: $hearder-padding-top + $hearder-padding-bottom + $logo-icon-width;
+  height: 9vh;
 
   border-bottom: 1px solid $dark-shades-color;
 
@@ -296,7 +291,7 @@ $logo-icon-width: 50px;
   }
 
   &__icon--logo {
-    width: $logo-icon-width;
+    width: 50px;
     margin-left: 9px;
     margin-right: 5px;
   }
@@ -318,7 +313,7 @@ $logo-icon-width: 50px;
  *  Main  
  */
 .main__container {
-  margin-top: $hearder-padding-top + $hearder-padding-bottom + $logo-icon-width;
+  margin-top: 9vh;
 
   // Components
   .btn {
@@ -939,13 +934,103 @@ $logo-icon-width: 50px;
       margin-top: 2.5rem;
     }
   }
+
+  .website-services {
+    margin-top: 75px;
+    &__cards-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      width: 200px;
+
+      margin-bottom: 25px;
+
+      &__img {
+        width: 80%;
+      }
+
+      &__text {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        text-align: center;
+        color: $dark-shades-color;
+
+        width: 100%;
+      }
+    }
+  }
 }
 
 /*
  *  Footer  
  */
 footer {
-  height: 500px;
-  background-color: #5ebb69;
-  margin-top: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: $light-accent-color;
+
+  height: 91vh;
+
+  $footer-elements-margins: 5% 15% 5% 15%;
+
+  .contact {
+    margin: $footer-elements-margins;
+    * {
+      color: $light-shades-color;
+    }
+
+    &__title {
+      text-align: center;
+
+      font-weight: 600;
+    }
+
+    &__address-container {
+    }
+
+    &__phone-container {
+    }
+
+    &__email-container {
+    }
+
+    &__container {
+      &__text {
+        font-weight: 400;
+        font-style: normal;
+
+        opacity: 90%;
+      }
+
+      &__link {
+        font-weight: 300;
+
+        font-style: italic;
+        opacity: 70%;
+      }
+
+      &:hover {
+        & > * {
+          opacity: 100%;
+        }
+      }
+    }
+  }
+
+  .copyright {
+    margin: $footer-elements-margins;
+    * {
+      color: $light-shades-color;
+    }
+  }
 }
