@@ -1,8 +1,8 @@
 /*
  *  Hamburger Menu
  */
-const menuBtn = document.querySelector('.header__menu__btn');
-const menuIcon = document.querySelector('.header__menu__btn__icon');
+const menuBtn = document.querySelector('.header__menu__btn--hamburger');
+const menuIcon = document.querySelector('.header__menu__btn--hamburger__icon');
 const nav = document.querySelector('.header__menu__nav');
 const navList = document.querySelector('.header__menu__nav__list');
 const navItems = document.querySelectorAll('.header__menu__nav__list__item');
@@ -10,50 +10,85 @@ const navItems = document.querySelectorAll('.header__menu__nav__list__item');
 let showMenu = false;
 
 menuBtn.addEventListener('click', () => {
-  if (!showMenu) {
-    menuIcon.classList.add('open');
-    nav.classList.add('open');
-    navList.classList.add('open');
-    navItems.forEach((item) => item.classList.add('open'));
+  const mediaQuery = window.matchMedia('(max-width: 768px)');
 
-    showMenu = true;
-  } else {
-    menuIcon.classList.remove('open');
-    nav.classList.remove('open');
-    navList.classList.remove('open');
-    navItems.forEach((item) => item.classList.remove('open'));
+  if (mediaQuery.matches) {
+    if (!showMenu) {
+      menuIcon.classList.add('open');
+      nav.classList.add('open');
+      navList.classList.add('open');
+      navItems.forEach((item) => item.classList.add('open'));
 
-    showMenu = false;
+      showMenu = true;
+    } else {
+      menuIcon.classList.remove('open');
+      nav.classList.remove('open');
+      navList.classList.remove('open');
+      navItems.forEach((item) => item.classList.remove('open'));
+
+      showMenu = false;
+    }
   }
 });
 
 for (let i = 0; i < navItems.length; i++) {
   navItems[i].addEventListener('click', function () {
-    // Contract list item selected
-    if (navItems[i].classList.contains('expand')) {
-      navItems[i].classList.remove('expand');
+    const mediaQuery = window.matchMedia('(max-width: 768px)');
 
-      // Add open class to sublist
-      navItems[i].childNodes[3].classList.remove('open');
+    if (mediaQuery.matches) {
+      const navItemSublist = navItems[i].querySelector(
+        '.header__menu__nav__sublist'
+      );
 
-      // Animation
-      setTimeout(function () {
-        navItems[i].childNodes[3].style.display = 'none';
-      }, 500);
-    }
-    // Expand list item selected
-    else {
-      navItems[i].classList.add('expand');
+      // Contract list item selected
+      if (navItems[i].classList.contains('expand')) {
+        navItems[i].classList.remove('expand');
 
-      // Add open class to sublist
-      navItems[i].childNodes[3].classList.add('open');
+        // Add open class to sublist
+        navItemSublist.classList.remove('open');
 
-      // Animation
-      setTimeout(function () {
-        navItems[i].childNodes[3].style.display = 'block';
-      }, 0);
+        // Animation
+        setTimeout(function () {
+          navItemSublist.style.display = 'none';
+        }, 500);
+      }
+      // Expand list item selected
+      else {
+        navItems[i].classList.add('expand');
+
+        // Add open class to sublist
+        navItemSublist.classList.add('open');
+
+        // Animation
+        setTimeout(function () {
+          navItemSublist.style.display = 'block';
+        }, 0);
+      }
     }
   });
+}
+
+const navSublists = document.querySelectorAll('.header__menu__nav__sublist');
+const header = document.querySelector('.header');
+
+const navListsItems = document.querySelectorAll(
+  '.header__menu__nav__list__item__content'
+);
+
+for (let i = 0; i < navListsItems.length; i++) {
+  const mediaQuery = window.matchMedia('(min-width: 768px)');
+
+  if (mediaQuery.matches) {
+    const ListItemContent = navListsItems[i];
+    const Sublist = ListItemContent.parentElement.querySelectorAll(
+      '.header__menu__nav__sublist'
+    );
+
+    ListItemContent.addEventListener('mouseover', () => {
+      // let temp = Sublist.getBoundingClientRect();
+      // console.log(temp.width);
+    });
+  }
 }
 
 /*
@@ -143,14 +178,16 @@ const booksNextBtn = document.querySelector(
  *  The width dimension comes from the current size on reloading the page
  *    Fix - Get a live width dimension so the slider function works properly after resizing the page
  */
-const booksContainerDimensions = booksCardsContainer.getBoundingClientRect();
-const booksContainerWidth = booksContainerDimensions.width;
 
 booksNextBtn.addEventListener('click', () => {
+  const booksContainerDimensions = booksCardsContainer.getBoundingClientRect();
+  const booksContainerWidth = booksContainerDimensions.width;
   booksCardsContainer.scrollLeft += booksContainerWidth;
 });
 
 booksPrevBtn.addEventListener('click', () => {
+  const booksContainerDimensions = booksCardsContainer.getBoundingClientRect();
+  const booksContainerWidth = booksContainerDimensions.width;
   booksCardsContainer.scrollLeft -= booksContainerWidth;
 });
 
