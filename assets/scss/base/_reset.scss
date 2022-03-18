@@ -1,0 +1,28 @@
+@use '../abstracts' as *;
+
+// CSS Resets
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+  text-decoration: none;
+
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  color: $dark-shades-color;
+}
+
+body {
+  background: $light-shades-color;
+}
+
+:root {
+  // font-size: 14px;
+
+  @include mq(large) {
+    font-size: 16px;
+  }
+}

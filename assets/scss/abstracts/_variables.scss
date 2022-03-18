@@ -1,0 +1,38 @@
+/*
+ *  Color variables
+ */
+
+$light-shades-color: #f0f0ec;
+$light-accent-color: #5ebb69;
+$primary-color: #67bd11;
+$dark-accent-color: #d9772f;
+$dark-shades-color: #1f2724;
+$grayed-text-color: #999999;
+$cards-color: #ffffff;
+
+/*
+ *  Font variables
+ */
+$font-weigth-lighter2: 200;
+$font-weigth-ligther1: 300;
+$font-weigth-normal: 400;
+$font-weigth-bolder1: 500;
+$font-weigth-bolder2: 600;
+$font-weigth-bolder3: 700;
+$font-weigth-bold: 700;
+
+// Arhitecture Variables
+$menu-opacity: 0.97;
+
+/* --- Breakpoints ---
+ * Small devices (portrait tablets and large phones, 600px and up) 
+ * Medium devices (landscape tablets, 768px and up) 
+ * Large devices (laptops/desktops, 992px and up) 
+ * Extra large devices (large laptops and desktops, 1200px and up) 
+ */
+$breakpoints: (
+  'small': 600px,
+  'medium': 768px,
+  'large': 992px,
+  'x-large': 1200px
+);
