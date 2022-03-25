@@ -1,10 +1,8 @@
 @use '../abstracts' as *;
 
-/*
- *  Menu  
- */
 .header__menu {
   z-index: 1000;
+
   // Menu button (hamburger)
   &__btn--hamburger {
     position: relative;
@@ -22,7 +20,7 @@
       top: 0.5rem;
       width: 28px;
       height: 3px;
-      background: $dark-shades-color;
+      background: $clr-dark-shades;
       transition: all 0.5s ease-in-out;
 
       &::before {
@@ -31,7 +29,7 @@
         top: -8px;
         width: 28px;
         height: 3px;
-        background: $dark-shades-color;
+        background: $clr-dark-shades;
         transition: all 0.5s ease-in-out;
       }
 
@@ -41,7 +39,7 @@
         top: 8px;
         width: 24px;
         height: 3px;
-        background: $dark-shades-color;
+        background: $clr-dark-shades;
         transition: all 0.5s ease-in-out;
       }
 
@@ -85,7 +83,7 @@
       height: 100vh;
       padding-top: 15vh;
       padding-left: 5vh;
-      background: $light-shades-color;
+      background: $clr-light-shades;
       opacity: $menu-opacity;
       overflow: hidden;
 
@@ -109,7 +107,7 @@
         &.expand {
           .header__menu__nav__list__item__content {
             &__text {
-              color: $light-accent-color;
+              color: $clr-light-accent;
             }
             &__icon {
               transform: rotate(90deg);
@@ -123,19 +121,19 @@
 
           align-items: center;
 
+          &__icon {
+            transition: transform 200ms linear;
+            height: 1.5em;
+          }
+
           &__text {
             font-size: 1.75rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
 
             &:hover {
-              color: $light-accent-color;
+              color: $clr-light-accent;
             }
-          }
-
-          &__icon {
-            transition: transform 200ms linear;
-            height: 1.5em;
           }
         }
       }
@@ -154,15 +152,16 @@
 
       &__item {
         &__content {
-          font-size: 1.25rem;
-          text-transform: uppercase;
-          letter-spacing: 0.1em;
-
           padding-top: 0.2em;
           padding-bottom: 0.2em;
 
+          font-size: 1.25rem;
+          letter-spacing: 0.1em;
+
+          text-transform: uppercase;
+
           &:hover {
-            color: $dark-accent-color;
+            color: $clr-dark-accent;
           }
         }
       }
@@ -201,9 +200,9 @@
     left: 6rem;
     width: 70%;
     height: 5rem;
-    border-bottom: 1px solid $dark-shades-color;
+    border-bottom: 1px solid $clr-dark-shades;
 
-    background-color: $light-shades-color;
+    background-color: $clr-light-shades;
 
     &__btn--hamburger {
       display: none;
@@ -240,13 +239,13 @@
           &__content {
             position: relative;
 
-            &__text {
-              font-size: 1.25rem;
-              font-weight: $font-weigth-bolder1;
-            }
-
             &__icon {
               display: none;
+            }
+
+            &__text {
+              font-size: 1.1rem;
+              font-weight: $fw-light-bold;
             }
 
             &::after {
@@ -257,7 +256,7 @@
               position: absolute;
               top: 0;
 
-              background-color: $dark-shades-color;
+              background-color: $clr-dark-shades;
 
               transform: scaleX(0%);
               transition: transform 300ms ease-in-out;
@@ -269,7 +268,7 @@
             }
 
             .header__menu__nav__list__item__content__text {
-              color: $light-accent-color;
+              color: $clr-light-accent;
             }
 
             .header__menu__nav__sublist {
@@ -291,10 +290,10 @@
         left: 50%;
         transform: translateX(-50%);
 
-        border: 1px solid $dark-shades-color;
+        border: 1px solid $clr-dark-shades;
         border-top: none;
 
-        background-color: $light-shades-color;
+        background-color: $clr-light-shades;
 
         &__item {
           display: flex;
@@ -306,10 +305,12 @@
           &__content {
             text-align: center;
 
-            color: $dark-shades-color;
             font-size: 1rem;
-            text-transform: uppercase;
             letter-spacing: 0.05em;
+
+            text-transform: uppercase;
+
+            color: $clr-dark-shades;
           }
         }
       }
@@ -319,15 +320,9 @@
   @include mq(large) {
     height: 4rem;
 
-    &__nav__list__item__content__text {
-      font-size: 1rem;
-    }
-
-    &__nav__sublist {
-      top: 4rem;
-
-      &__item__content {
-        font-size: 0.9rem;
+    &__nav {
+      &__sublist {
+        top: 4rem;
       }
     }
   }
@@ -336,15 +331,19 @@
     height: 4.5rem;
     left: 7rem;
 
-    &__nav__list__item__content__text {
-      font-size: 1.1rem;
-    }
+    &__nav {
+      &__list {
+        &__item__content__text {
+          font-size: 1.1rem;
+        }
+      }
 
-    &__nav__sublist {
-      top: 4.5rem;
+      &__sublist {
+        top: 4.5rem;
 
-      &__item__content {
-        font-size: 1rem;
+        &__item__content {
+          font-size: 1rem;
+        }
       }
     }
   }

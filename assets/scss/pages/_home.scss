@@ -1,8 +1,5 @@
 @use '../abstracts' as *;
 
-/*
- *  Main  
- */
 main {
   margin-top: 6rem;
   min-width: 300px;
@@ -27,7 +24,6 @@ main {
 
   .cover {
     position: relative;
-
     display: block;
     height: 100%;
 
@@ -40,7 +36,7 @@ main {
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: $dark-shades-color;
+      background-color: $clr-dark-shades;
       opacity: 0.6;
       z-index: 1;
     }
@@ -66,92 +62,124 @@ main {
       text-align: center;
 
       font-size: 1.15rem;
+      color: $clr-light-shades;
       text-transform: capitalize;
-
-      color: $light-shades-color;
     }
 
     &__btn {
       z-index: 10;
       display: none;
     }
+
+    @include mq(medium) {
+      // height: clamp(500px, 100%, 90vh); * doesn't work on grid templating
+      min-height: 600px;
+      height: 100%;
+      max-height: 91vh;
+
+      &__img {
+        min-height: 600px;
+        height: 100%;
+        max-height: 91vh;
+      }
+
+      &__title {
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: block;
+        text-align: center;
+
+        width: 100%;
+        top: 28%;
+
+        text-transform: uppercase;
+        font-size: 4rem;
+        letter-spacing: 0.1em;
+        font-weight: $fw-light-bold;
+        color: $clr-light-shades;
+      }
+
+      &__btn {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        top: 48%;
+        left: 50%;
+        transform: translateX(-50%);
+
+        border-radius: 30px;
+        box-shadow: 0px 10px 10px rgba(46, 213, 115, 0.15);
+      }
+    }
+
+    @include mq(large) {
+      margin: 0;
+
+      &__subtitle {
+        top: 42%;
+      }
+
+      &__btn {
+        top: 50%;
+      }
+    }
   }
 
   .popular-products {
-    text-align: center;
     margin-left: 2.5em;
     margin-right: 2.5em;
+
+    text-align: center;
 
     &__cards-container {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-
       justify-items: center;
 
       padding: 1rem;
       gap: 1rem;
     }
 
-    &__card {
-      display: flex;
-      flex-direction: column;
-      text-align: center;
+    &__btn {
+      margin-top: 1rem;
+    }
 
-      width: 100%;
-      height: 45vw;
+    @include mq(small) {
+      margin-left: 10%;
+      margin-right: 10%;
+    }
 
-      background-color: $cards-color;
+    @include mq(medium) {
+      margin-left: 1rem;
+      margin-right: 1rem;
 
-      filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.2));
-      transition: all 300ms ease-out;
-
-      &:hover {
-        filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.3));
-        .popular-products__card__title {
-          left: 5%;
-          width: 90%;
-        }
-      }
-
-      &__link {
-        width: 100%;
-      }
-
-      &__img {
-        display: block;
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
-        // margin-left: auto;
-        // margin-right: auto;
-      }
-
-      &__title {
-        position: absolute;
-        width: 70%;
-        left: 15%;
-        bottom: 0;
-        margin-bottom: 0.5em;
-
-        font-weight: $font-weigth-bolder2;
-        text-transform: uppercase;
-        letter-spacing: 0.2em;
-        color: $light-shades-color;
-        background-color: $dark-shades-color;
-
-        transition: all 300ms ease-out;
-
-        overflow: hidden;
+      &__cards-container {
+        display: flex;
+        flex-direction: row;
       }
     }
 
-    &__btn {
-      margin-top: 1rem;
+    @include mq(large) {
+      margin-left: 3rem;
+      margin-right: 1rem;
+
+      &__btn {
+        margin-top: 0.5rem;
+      }
+    }
+
+    @include mq(x-large) {
+      margin-left: 6rem;
+      margin-right: 0rem;
     }
   }
 
   .promotions {
     position: relative;
+
     text-align: center;
 
     &__cards-container-wrapper {
@@ -159,20 +187,23 @@ main {
 
       overflow-x: auto;
       scroll-behavior: smooth;
+
       &::-webkit-scrollbar {
         display: none;
       }
 
       &__btn {
-        width: 50px;
-        height: 100%;
-        border: none;
         position: absolute;
         top: 0;
+
         display: flex;
         justify-content: center;
         align-items: center;
 
+        width: 50px;
+        height: 100%;
+
+        border: none;
         cursor: pointer;
         z-index: 10;
 
@@ -186,19 +217,20 @@ main {
         background: linear-gradient(
           -90deg,
           rgba(255, 255, 255, 0) 0%,
-          $light-shades-color 100%
+          $clr-light-shades 100%
         );
 
         img {
           transform: rotate(180deg);
         }
       }
+
       &__btn--next {
         right: 0;
         background: linear-gradient(
           90deg,
           rgba(255, 255, 255, 0) 0%,
-          $light-shades-color 100%
+          $clr-light-shades 100%
         );
       }
     }
@@ -208,82 +240,69 @@ main {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      align-items: center;
 
       height: 350px;
-
       /*
          *  responsive width - TODO 
         */
       width: 8 * 220px;
+
       margin-left: 50px;
       margin-right: 50px;
-
-      align-items: center;
-    }
-
-    &__card {
-      display: flex;
-      flex-direction: column;
-      text-align: center;
-
-      width: 200px;
-
-      background-color: white;
-      filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.2));
-
-      > * {
-        text-align: center;
-        font-size: 14px;
-      }
-
-      &__img {
-        display: block;
-        object-fit: cover;
-        width: 95%;
-        height: 100%;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      &__subtitle {
-        font-style: italic;
-      }
-
-      &__title {
-        font-weight: bold;
-      }
-
-      &__price-tag {
-        font-weight: bold;
-        color: $primary-color;
-      }
-
-      &__btn {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-
-        padding: 0;
-
-        width: 79%;
-        height: 35px;
-        margin: 1em auto;
-
-        &__img {
-          padding-right: 0.5em;
-          height: 70%;
-        }
-        &__text {
-          color: $primary-color;
-          font-weight: 500;
-          font-size: 14px;
-        }
-      }
     }
 
     &__btn {
       margin-top: 1rem;
+    }
+
+    @include mq(small) {
+      margin-left: 5%;
+      margin-right: 5%;
+    }
+
+    @include mq(medium) {
+      margin-left: 7.5%;
+      margin-right: 7.5%;
+
+      &__cards-container {
+        /*
+       *  responsive width - TODO
+      */
+        width: 8 * 195px;
+      }
+    }
+
+    @include mq(large) {
+      width: 85%;
+
+      margin: 0;
+      margin-left: 4rem;
+      margin-top: 2rem;
+
+      &__cards-container-wrapper {
+        &__btn--prev {
+          left: -50px;
+        }
+
+        &__btn--next {
+          right: -50px;
+        }
+      }
+
+      &__cards-container {
+        height: 100%;
+        padding: 0.75rem;
+        margin: 0;
+      }
+
+      &__btn {
+        margin-top: 0.5rem;
+      }
+    }
+
+    @include mq(x-large) {
+      margin-left: 6.5rem;
     }
   }
 
@@ -293,58 +312,34 @@ main {
       flex-direction: column;
       align-items: center;
     }
-    &__card {
-      position: relative;
-      text-align: center;
-      width: 90%;
-      height: 120px;
 
-      transition: all 400ms ease-in-out;
+    @include mq(small) {
+      margin-left: 10%;
+      margin-right: 10%;
+    }
 
-      &__bg {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+    @include mq(medium) {
+      margin-left: 15%;
+      margin-right: 15%;
+    }
+
+    @include mq(large) {
+      margin-left: 1rem;
+      margin-right: 1rem;
+
+      &__cards-container {
+        row-gap: 0.5rem;
       }
+    }
 
-      &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: $dark-shades-color;
-        opacity: 0.3;
-        z-index: 1;
-      }
+    @include mq(x-large) {
+      margin-left: 2rem;
+      margin-right: 2rem;
 
-      &__title {
-        z-index: 10;
+      max-width: 30rem;
 
-        color: $light-shades-color;
-        font-weight: $font-weigth-bolder2;
-        font-size: 1.7rem;
-        text-transform: capitalize;
-        letter-spacing: 0.2em;
-
-        @include absolute_centering();
-      }
-
-      &__btn {
-        z-index: 10;
-
-        position: absolute;
-        right: 0;
-        top: 50%;
-        transform: translateY(-50%);
-
-        cursor: pointer;
-      }
-
-      &:hover {
-        width: 95%;
-        height: 145px;
+      &__cards-container {
+        row-gap: 0.5rem;
       }
     }
   }
@@ -358,6 +353,7 @@ main {
 
       overflow-x: auto;
       scroll-behavior: smooth;
+
       &::-webkit-scrollbar {
         display: none;
       }
@@ -366,13 +362,15 @@ main {
         position: absolute;
         z-index: 10;
         top: 0;
-        width: 50px;
-        height: 100%;
-        cursor: pointer;
 
         display: flex;
         justify-content: center;
         align-items: center;
+
+        width: 50px;
+        height: 100%;
+
+        cursor: pointer;
 
         img {
           width: 100%;
@@ -384,7 +382,7 @@ main {
         background: linear-gradient(
           -90deg,
           rgba(255, 255, 255, 0) 0%,
-          $light-shades-color 100%
+          $clr-light-shades 100%
         );
 
         img {
@@ -396,7 +394,7 @@ main {
         background: linear-gradient(
           90deg,
           rgba(255, 255, 255, 0) 0%,
-          $light-shades-color 100%
+          $clr-light-shades 100%
         );
       }
     }
@@ -416,428 +414,17 @@ main {
       padding: 1em 0;
     }
 
-    &__card {
-      display: flex;
-      flex-direction: column;
-      text-align: center;
-
-      width: 200px;
-
-      padding: 10px 0;
-
-      background-color: $cards-color;
-      filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.2));
-
-      > * {
-        text-align: center;
-        font-size: 1rem;
-      }
-
-      &__img {
-        display: block;
-        object-fit: cover;
-        width: 70%;
-        height: 100%;
-
-        margin-left: auto;
-        margin-right: auto;
-
-        border-radius: 5px;
-        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-      }
-
-      &__author {
-        font-style: italic;
-      }
-
-      &__title {
-        font-weight: bold;
-      }
-
-      &__price-tag {
-        font-weight: $font-weigth-bolder2;
-        font-size: 1.15rem;
-        color: $primary-color;
-      }
-    }
-  }
-
-  .articles {
-    text-align: center;
-
-    &__cards-container {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-
-      margin: 0 1.5rem;
-      gap: 2rem 1.5rem;
+    @include mq(small) {
+      margin-left: 5%;
+      margin-right: 5%;
     }
 
-    &__card {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-
-      max-height: 600px;
-
-      overflow: hidden;
-
-      &__img {
-        width: 100%;
-        max-height: 250px;
-        object-fit: cover;
-        border-radius: 0px 0px 20px 20px;
-      }
-
-      &__title,
-      &__published-date,
-      &__description {
-        text-align: start;
-
-        margin: 0.5rem 1.45rem 0 1.45rem;
-
-        font-weight: $font-weigth-normal;
-        font-style: normal;
-      }
-
-      &__title {
-        font-size: 1.25rem;
-        color: $primary-color;
-
-        word-wrap: break-word;
-        hyphens: auto;
-      }
-
-      &__published-date {
-        margin-top: 0;
-
-        font-size: 1rem;
-        color: $grayed-text-color;
-      }
-
-      &__description {
-        font-size: 0.9rem;
-        color: $dark-shades-color;
-
-        word-wrap: break-word;
-        hyphens: auto;
-        overflow: hidden;
-      }
-
-      &__btn {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-
-        margin: auto auto 0px auto;
-        border: none;
-        opacity: 0.6;
-        cursor: pointer;
-
-        font-style: normal;
-        font-weight: $font-weigth-normal;
-        font-size: 1.1rem;
-        color: $primary-color;
-
-        transition: all 200ms ease-in-out;
-
-        &__img {
-          height: 1.1rem;
-          margin-left: 0.5em;
-
-          opacity: 0.6;
-        }
-
-        &:hover {
-          opacity: 1;
-
-          &__img {
-            opacity: 0.8;
-          }
-        }
-      }
+    @include mq(medium) {
+      margin-left: 7.5%;
+      margin-right: 7.5%;
     }
 
-    &__btn {
-      margin-top: 2rem;
-    }
-  }
-
-  .website-services {
-    &__cards-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    &__card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      margin-bottom: 25px;
-
-      width: 12rem;
-
-      &__img {
-        width: 85%;
-      }
-
-      &__text {
-        width: 100%;
-
-        text-align: center;
-        color: $dark-shades-color;
-      }
-    }
-  }
-
-  @include mq(small) {
-    $margin: 10%;
-    $margin-sliders: calc($margin/2);
-
-    .cover {
-    }
-    .popular-products {
-      margin-left: $margin;
-      margin-right: $margin;
-    }
-    .promotions {
-      margin-left: $margin-sliders;
-      margin-right: $margin-sliders;
-    }
-    .categories {
-      margin-left: $margin;
-      margin-right: $margin;
-    }
-    .books-showcase {
-      margin-left: $margin-sliders;
-      margin-right: $margin-sliders;
-    }
-
-    .articles {
-      margin-left: $margin;
-      margin-right: $margin;
-    }
-    .website-services {
-      margin-left: $margin;
-      margin-right: $margin;
-
-      &__cards-container {
-        flex-direction: row;
-        justify-content: space-between;
-
-        align-items: flex-start;
-      }
-    }
-  }
-
-  @include mq(medium) {
-    $margin: 15%;
-    $margin-sliders: calc($margin/2);
-
-    .cover {
-      &__img {
-        min-height: 500px;
-        height: 100%;
-        max-height: 90vh;
-      }
-
-      &__title {
-        display: block;
-        position: absolute;
-        left: 0;
-        top: 0;
-
-        width: 100%;
-        top: 28%;
-
-        text-align: center;
-
-        text-transform: uppercase;
-        font-size: 4rem;
-        letter-spacing: 0.1em;
-        font-weight: $font-weigth-bolder1;
-
-        color: $light-shades-color;
-      }
-
-      &__btn {
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-
-        top: 48%;
-        left: 50%;
-        transform: translateX(-50%);
-
-        border-radius: 30px;
-        box-shadow: 0px 10px 10px rgba(46, 213, 115, 0.15);
-      }
-    }
-    .popular-products {
-      margin-left: 1rem;
-      margin-right: 1rem;
-
-      &__cards-container {
-        display: flex;
-        flex-direction: row;
-      }
-
-      &__card {
-        width: 100%;
-        height: 30vw;
-      }
-    }
-    .promotions {
-      margin-left: $margin-sliders;
-      margin-right: $margin-sliders;
-
-      &__cards-container {
-        /*
-       *  responsive width - TODO
-      */
-        width: 8 * 195px;
-      }
-
-      &__card {
-        width: 180px;
-      }
-    }
-    .categories {
-      margin-left: $margin;
-      margin-right: $margin;
-    }
-    .books-showcase {
-      margin-left: $margin-sliders;
-      margin-right: $margin-sliders;
-    }
-
-    .articles {
-      margin-left: $margin;
-      margin-right: $margin;
-    }
-    .website-services {
-      margin-left: $margin;
-      margin-right: $margin;
-    }
-  }
-
-  @include mq(large) {
-    // GRID TEMPLATING
-    display: grid;
-
-    grid-template-columns: 0.95fr 0.95fr 1.1fr;
-    grid-template-areas:
-      'cover-section cover-section cover-section'
-      'popular-products popular-products categories'
-      'promotions promotions categories'
-      'books-showcase books-showcase books-showcase'
-      'articles articles articles'
-      'website-services website-services website-services';
-
-    // GRID ELEMENTS
-    .cover {
-      grid-area: cover-section;
-    }
-    .popular-products {
-      grid-area: popular-products;
-    }
-    .promotions {
-      grid-area: promotions;
-    }
-    .categories {
-      grid-area: categories;
-    }
-    .books-showcase {
-      grid-area: books-showcase;
-    }
-    .articles {
-      grid-area: articles;
-    }
-    .website-services {
-      grid-area: website-services;
-    }
-
-    // COMPONENTS
-    .section__title {
-      font-size: 1.4rem;
-    }
-    .btn {
-      font-size: 0.9rem;
-    }
-
-    // MAIN ELEMENTS
-    .cover {
-      margin: 0;
-
-      &__subtitle {
-        top: 42%;
-      }
-
-      &__btn {
-        top: 50%;
-      }
-    }
-
-    .popular-products {
-      margin-left: 4rem;
-      margin-right: 1rem;
-
-      &__card {
-        height: 12rem;
-      }
-
-      &__btn {
-        margin-top: 0.5rem;
-      }
-    }
-
-    .promotions {
-      margin: 0;
-      margin-left: 4rem;
-      margin-top: 2rem;
-
-      width: 85%;
-
-      &__cards-container-wrapper {
-        &__btn--prev {
-          left: -50px;
-        }
-
-        &__btn--next {
-          right: -50px;
-        }
-      }
-
-      &__cards-container {
-        height: 100%;
-        padding: 0.75rem;
-        margin: 0;
-      }
-
-      &__card {
-        &__img {
-          height: 10rem;
-        }
-      }
-
-      &__btn {
-        margin-top: 0.5rem;
-      }
-    }
-
-    .categories {
-      margin-left: 1rem;
-      margin-right: 1rem;
-
-      &__cards-container {
-        row-gap: 0.5rem;
-      }
-    }
-
-    .books-showcase {
+    @include mq(large) {
       margin-left: 10%;
       margin-right: 10%;
 
@@ -858,110 +445,86 @@ main {
         padding: 0.75rem;
         margin: 0;
       }
-
-      &__card {
-        width: 170px;
-
-        > * {
-          font-size: 0.9rem;
-        }
-      }
     }
 
-    .articles {
+    @include mq(x-large) {
+      margin-left: 15%;
+      margin-right: 15%;
+    }
+  }
+
+  .articles {
+    text-align: center;
+
+    &__cards-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      margin: 0 1.5rem;
+      gap: 2rem 1.5rem;
+    }
+
+    &__btn {
+      margin-top: 2rem;
+    }
+
+    @include mq(small) {
+      margin-left: 10%;
+      margin-right: 10%;
+    }
+
+    @include mq(medium) {
+      margin-left: 15%;
+      margin-right: 15%;
+    }
+
+    @include mq(large) {
       margin-left: 3rem;
       margin-right: 3rem;
 
       &__cards-container {
         grid-template-columns: repeat(4, 1fr);
       }
+    }
 
-      &__card {
-        &__title {
-          font-size: 1rem;
-        }
+    @include mq(x-large) {
+      margin-left: auto;
+      margin-right: auto;
 
-        &__published-date {
-          font-size: 0.75rem;
-        }
+      max-width: 1250px;
+    }
+  }
 
-        &__description {
-          font-size: 0.75rem;
-        }
+  .website-services {
+    &__cards-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-        &__btn {
-          font-size: 1rem;
-        }
+    @include mq(small) {
+      margin-left: 10%;
+      margin-right: 10%;
+
+      &__cards-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
       }
     }
-    .website-services {
+
+    @include mq(medium) {
+      margin-left: 15%;
+      margin-right: 15%;
+    }
+
+    @include mq(large) {
       margin-left: auto;
       margin-right: auto;
 
       &__cards-container {
         column-gap: 2rem;
         align-items: flex-start;
-      }
-
-      &__card {
-        width: 10rem;
-      }
-    }
-  }
-
-  @include mq(x-large) {
-    // COMPONENTS
-    .section__title {
-      font-size: 1.5rem;
-    }
-
-    .popular-products {
-      margin-left: 6rem;
-      margin-right: 0rem;
-    }
-
-    .promotions {
-      margin-left: 6.5rem;
-    }
-
-    .categories {
-      margin-left: 2rem;
-      margin-right: 2rem;
-
-      max-width: 30rem;
-
-      &__cards-container {
-        row-gap: 0.5rem;
-      }
-    }
-
-    .books-showcase {
-      margin-left: 15%;
-      margin-right: 15%;
-    }
-
-    .articles {
-      margin-left: auto;
-      margin-right: auto;
-
-      max-width: 1250px;
-
-      &__card {
-        &__title {
-          font-size: 1.1rem;
-        }
-
-        &__published-date {
-          font-size: 0.85rem;
-        }
-
-        &__description {
-          font-size: 0.85rem;
-        }
-
-        &__btn {
-          font-size: 1.1rem;
-        }
       }
     }
   }

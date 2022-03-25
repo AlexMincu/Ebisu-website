@@ -7,15 +7,25 @@
   "version": "1.0.0",
   "main": "app.js",
   "devDependencies": {
+    "autoprefixer": "^10.4.4",
+    "copyfiles": "^2.4.1",
+    "cssnano": "^5.1.4",
     "eslint": "^8.10.0",
     "nodemon": "^2.0.15",
+    "npm-run-all": "^4.1.5",
+    "onchange": "^7.1.0",
+    "postcss-cli": "^9.1.0",
     "prettier": "^2.5.1",
     "sass": "^1.49.9"
   },
   "scripts": {
-    "start": "node app.js",
-    "devStart": "nodemon app.js",
-    "watch:sass": "sass --watch assets/scss/main.scss:assets/css/main.css"
+    "watch:sass": "sass  --no-source-map --watch assets/scss/main.scss:assets/css/main.css",
+    "watch": "npm-run-all --parallel watch:*",
+    "serve": "nodemon app.js",
+    "start": "npm-run-all --parallel watch serve",
+    "build:sass": "sass  --no-source-map assets/scss/main.scss:assets/css/main.css",
+    "build:postbuild": "postcss assets/css/*.css -u autoprefixer cssnano -r --no-map",
+    "build": "npm-run-all --parallel build:*"
   },
   "author": "Alex Minculescu",
   "license": "ISC",

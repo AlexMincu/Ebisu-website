@@ -4,9 +4,16 @@
   font-size: 1.75rem;
   text-align: center;
   text-transform: uppercase;
+
+  @include mq(large) {
+    font-size: 1.4rem;
+  }
+
+  @include mq(x-large) {
+    font-size: 1.5rem;
+  }
 }
 
 .section__title--color {
-  @extend .section__title;
-  color: $light-accent-color;
+  color: $clr-light-accent;
 }

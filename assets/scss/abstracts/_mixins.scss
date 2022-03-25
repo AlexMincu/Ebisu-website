@@ -1,14 +1,5 @@
 @use 'sass:map';
 @use 'variables' as *;
-/*
- *  Mixins
- */
-@mixin absolute_centering {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
 
 // Media-queries
 @mixin mq($key) {

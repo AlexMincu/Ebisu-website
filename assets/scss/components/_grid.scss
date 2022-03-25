@@ -1,0 +1,43 @@
+@use '../abstracts' as *;
+
+/*
+ * Homepage - Grid
+ */
+.main__container {
+  @include mq(large) {
+    // GRID TEMPLATING
+    display: grid;
+
+    grid-template-columns: 0.95fr 0.95fr 1.1fr;
+    grid-template-areas:
+      'cover-section cover-section cover-section'
+      'popular-products popular-products categories'
+      'promotions promotions categories'
+      'books-showcase books-showcase books-showcase'
+      'articles articles articles'
+      'website-services website-services website-services';
+
+    // GRID ELEMENTS
+    .cover {
+      grid-area: cover-section;
+    }
+    .popular-products {
+      grid-area: popular-products;
+    }
+    .promotions {
+      grid-area: promotions;
+    }
+    .categories {
+      grid-area: categories;
+    }
+    .books-showcase {
+      grid-area: books-showcase;
+    }
+    .articles {
+      grid-area: articles;
+    }
+    .website-services {
+      grid-area: website-services;
+    }
+  }
+}

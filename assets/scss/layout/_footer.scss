@@ -1,58 +1,41 @@
 @use '../abstracts' as *;
 
-/*
- *  Footer  
- */
 footer {
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  background-color: $light-accent-color;
+  background-color: $clr-light-accent;
 
-  min-height: 600px;
-  height: 90vh;
-  max-height: 90vh;
+  height: max(600px, 90vh);
 
   overflow: hidden;
 
+  $footer-elements-margins: 5% 15% 5% 15%;
+
   * {
     font-size: 1rem;
+    color: $clr-light-shades;
   }
-
-  $footer-elements-margins: 5% 15% 5% 15%;
 
   .contact {
     margin: $footer-elements-margins;
-    * {
-      color: $light-shades-color;
-    }
 
     &__title {
       text-align: center;
-
-      font-weight: $font-weigth-bolder2;
-    }
-
-    &__address-container {
-    }
-
-    &__phone-container {
-    }
-
-    &__email-container {
+      font-weight: $fw-light-bold;
     }
 
     &__container {
       &__text {
-        font-weight: $font-weigth-normal;
+        font-weight: $fw-normal;
         font-style: normal;
 
         opacity: 90%;
       }
 
       &__link {
-        font-weight: $font-weigth-ligther1;
+        font-weight: $fw-ligth;
         font-style: italic;
 
         opacity: 70%;
@@ -68,9 +51,6 @@ footer {
 
   .copyright {
     margin: $footer-elements-margins;
-    * {
-      color: $light-shades-color;
-    }
   }
 
   @include mq(large) {

@@ -1,25 +1,18 @@
-/*
- *  Color variables
- */
+// Colors
+$clr-light-shades: #f0f0ec;
+$clr-light-accent: #5ebb69;
+$clr-primary: #67bd11;
+$clr-dark-accent: #d9772f;
+$clr-dark-shades: #1f2724;
+$clr-grayed-text: #999999;
+$clr-cards: #ffffff;
 
-$light-shades-color: #f0f0ec;
-$light-accent-color: #5ebb69;
-$primary-color: #67bd11;
-$dark-accent-color: #d9772f;
-$dark-shades-color: #1f2724;
-$grayed-text-color: #999999;
-$cards-color: #ffffff;
-
-/*
- *  Font variables
- */
-$font-weigth-lighter2: 200;
-$font-weigth-ligther1: 300;
-$font-weigth-normal: 400;
-$font-weigth-bolder1: 500;
-$font-weigth-bolder2: 600;
-$font-weigth-bolder3: 700;
-$font-weigth-bold: 700;
+// Font weight
+$fw-ligth: 300;
+$fw-normal: 400;
+$fw-light-bold: 600;
+$fw-bold: 700;
+$fw-black: 800;
 
 // Arhitecture Variables
 $menu-opacity: 0.97;

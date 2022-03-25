@@ -1,34 +1,32 @@
 @use '../abstracts' as *;
 
-// Components
 .btn {
-  text-transform: capitalize;
-  font-size: 1.15rem;
-  text-align: center;
   border: none;
   cursor: pointer;
+
+  text-transform: capitalize;
+  text-align: center;
 }
 
 .btn--full {
-  @extend .btn;
-
   border-radius: 10px;
   height: 2.5rem;
   padding-left: 2rem;
   padding-right: 2rem;
 
+  color: $clr-light-shades;
+
   background: linear-gradient(275.76deg, #67bd11 44.33%, #5ebb69 98.56%);
   filter: drop-shadow(4px 4px 6px rgba(0, 0, 0, 0.25));
-  color: $light-shades-color;
 }
 
 .btn--transparent {
-  border: 2px solid $primary-color;
+  border: 2px solid $clr-primary;
   background: none;
   border-radius: 10px;
 
+  color: $clr-light-accent;
+
   padding-left: 2rem;
   padding-right: 2rem;
-
-  color: $light-accent-color;
 }
