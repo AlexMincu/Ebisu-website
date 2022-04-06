@@ -1,7 +1,8 @@
 {
   "dependencies": {
     "ejs": "^3.1.6",
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "sharp": "^0.30.3"
   },
   "name": "ebisu_website",
   "version": "1.0.0",
@@ -16,8 +17,7 @@
     "onchange": "^7.1.0",
     "postcss-cli": "^9.1.0",
     "prettier": "^2.5.1",
-    "sass": "^1.49.9",
-    "sharp": "^0.30.3"
+    "sass": "^1.49.9"
   },
   "scripts": {
     "watch:sass": "sass  --no-source-map --watch assets/scss/main.scss:assets/css/main.css",
