@@ -92,6 +92,23 @@ for (let i = 0; i < navListsItems.length; i++) {
 }
 
 /*
+ *  Header
+ */
+const searchBtn = document.querySelector('.header__btn--search');
+const cartBtn = document.querySelector('.header__btn--cart');
+const accountBtn = document.querySelector('.header__btn--account');
+
+searchBtn.addEventListener('click', () => {
+  alert(`Search button clicked - TODO`);
+});
+cartBtn.addEventListener('click', () => {
+  alert(`Cart button clicked - TODO`);
+});
+accountBtn.addEventListener('click', () => {
+  alert(`Account button clicked - TODO`);
+});
+
+/*
  *  Popular Section
  */
 const popularProductsBtn = document.querySelector('.popular-products__btn');
@@ -105,31 +122,6 @@ popularProductsBtn.addEventListener('click', function () {
 /*
  *  Promotions Section
  */
-const promoCardsContainer = document.querySelector(
-  '.promotions__cards-container-wrapper'
-);
-const promoPrevBtn = document.querySelector(
-  '.promotions__cards-container-wrapper__btn--prev'
-);
-const promoNextBtn = document.querySelector(
-  '.promotions__cards-container-wrapper__btn--next'
-);
-
-/*
- *  The width dimension comes from the current size on reloading the page
- *    Fix - Get a live width dimension so the slider function works properly after resizing the page
- */
-const promoContainerDimensions = promoCardsContainer.getBoundingClientRect();
-const promoContainerWidth = promoContainerDimensions.width;
-
-promoNextBtn.addEventListener('click', () => {
-  promoCardsContainer.scrollLeft += promoContainerWidth;
-});
-
-promoPrevBtn.addEventListener('click', () => {
-  promoCardsContainer.scrollLeft -= promoContainerWidth;
-});
-
 const promotionsCardAddBtn = document.querySelectorAll(
   '.promotions__card__btn'
 );
@@ -162,34 +154,26 @@ categoriesCards.forEach((item) => {
 });
 
 /*
- *  Books-showcase Section
+ *  Cards Slider
  */
-const booksCardsContainer = document.querySelector(
-  '.books-showcase__cards-container-wrapper'
+const cardsSliderWrapper = document.querySelectorAll('.cards-slider__wrapper');
+const cardSliderBtnLeft = document.querySelectorAll('.cards-slider__btn--left');
+const cardSliderBtnRight = document.querySelectorAll(
+  '.cards-slider__btn--right'
 );
-const booksPrevBtn = document.querySelector(
-  '.books-showcase__cards-container-wrapper__btn--prev'
-);
-const booksNextBtn = document.querySelector(
-  '.books-showcase__cards-container-wrapper__btn--next'
-);
+
+for (const [indexSlider, slider] of cardsSliderWrapper.entries()) {
+  cardSliderBtnRight[indexSlider].addEventListener('click', () => {
+    slider.scrollLeft += slider.getBoundingClientRect().width * 0.9;
+  });
+  cardSliderBtnLeft[indexSlider].addEventListener('click', () => {
+    slider.scrollLeft -= slider.getBoundingClientRect().width * 0.9;
+  });
+}
 
 /*
- *  The width dimension comes from the current size on reloading the page
- *    Fix - Get a live width dimension so the slider function works properly after resizing the page
+ *  Books-showcase Section
  */
-
-booksNextBtn.addEventListener('click', () => {
-  const booksContainerDimensions = booksCardsContainer.getBoundingClientRect();
-  const booksContainerWidth = booksContainerDimensions.width;
-  booksCardsContainer.scrollLeft += booksContainerWidth;
-});
-
-booksPrevBtn.addEventListener('click', () => {
-  const booksContainerDimensions = booksCardsContainer.getBoundingClientRect();
-  const booksContainerWidth = booksContainerDimensions.width;
-  booksCardsContainer.scrollLeft -= booksContainerWidth;
-});
 
 const booksBtn = document.querySelector('.books-showcase__btn');
 

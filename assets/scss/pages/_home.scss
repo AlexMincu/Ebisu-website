@@ -179,77 +179,14 @@ main {
 
   .promotions {
     position: relative;
-
     text-align: center;
 
-    &__cards-container-wrapper {
-      position: relative;
+    margin-left: 10vw;
+    margin-right: 10vw;
 
-      overflow-x: auto;
-      scroll-behavior: smooth;
-
-      &::-webkit-scrollbar {
-        display: none;
-      }
-
-      &__btn {
-        position: absolute;
-        top: 0;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        width: 50px;
-        height: 100%;
-
-        border: none;
-        cursor: pointer;
-        z-index: 10;
-
-        img {
-          width: 100%;
-        }
-      }
-
-      &__btn--prev {
-        left: 0;
-        background: linear-gradient(
-          -90deg,
-          rgba(255, 255, 255, 0) 0%,
-          $clr-light-shades 100%
-        );
-
-        img {
-          transform: rotate(180deg);
-        }
-      }
-
-      &__btn--next {
-        right: 0;
-        background: linear-gradient(
-          90deg,
-          rgba(255, 255, 255, 0) 0%,
-          $clr-light-shades 100%
-        );
-      }
-    }
-
-    &__cards-container {
-      position: relative;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-
-      height: 350px;
-      /*
-         *  responsive width - TODO 
-        */
-      width: 8 * 220px;
-
-      margin-left: 50px;
-      margin-right: 50px;
+    .cards-slider--promotions {
+      height: 20rem;
+      width: 80vw;
     }
 
     &__btn {
@@ -257,52 +194,31 @@ main {
     }
 
     @include mq(small) {
-      margin-left: 5%;
-      margin-right: 5%;
+      // margin-left: 5%;
+      // margin-right: 5%;
     }
 
     @include mq(medium) {
-      margin-left: 7.5%;
-      margin-right: 7.5%;
-
-      &__cards-container {
-        /*
-       *  responsive width - TODO
-      */
-        width: 8 * 195px;
-      }
+      // margin-left: 7.5%;
+      // margin-right: 7.5%;
     }
 
     @include mq(large) {
-      width: 85%;
+      // width: 85%;
 
-      margin: 0;
-      margin-left: 4rem;
-      margin-top: 2rem;
-
-      &__cards-container-wrapper {
-        &__btn--prev {
-          left: -50px;
-        }
-
-        &__btn--next {
-          right: -50px;
-        }
-      }
+      // margin: 0;
+      // margin-left: 4rem;
+      // margin-top: 2rem;
 
       &__cards-container {
-        height: 100%;
-        padding: 0.75rem;
-        margin: 0;
-      }
-
-      &__btn {
-        margin-top: 0.5rem;
+        // height: 100%;
+        // padding: 0.75rem;
+        // margin: 0;
       }
     }
 
     @include mq(x-large) {
-      margin-left: 6.5rem;
+      // margin-left: 6.5rem;
     }
   }
 
@@ -348,108 +264,34 @@ main {
     position: relative;
     text-align: center;
 
-    &__cards-container-wrapper {
-      position: relative;
-
-      overflow-x: auto;
-      scroll-behavior: smooth;
-
-      &::-webkit-scrollbar {
-        display: none;
-      }
-
-      &__btn {
-        position: absolute;
-        z-index: 10;
-        top: 0;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        width: 50px;
-        height: 100%;
-
-        cursor: pointer;
-
-        img {
-          width: 100%;
-        }
-      }
-
-      &__btn--prev {
-        left: 0;
-        background: linear-gradient(
-          -90deg,
-          rgba(255, 255, 255, 0) 0%,
-          $clr-light-shades 100%
-        );
-
-        img {
-          transform: rotate(180deg);
-        }
-      }
-      &__btn--next {
-        right: 0;
-        background: linear-gradient(
-          90deg,
-          rgba(255, 255, 255, 0) 0%,
-          $clr-light-shades 100%
-        );
-      }
-    }
-
-    &__cards-container {
-      position: relative;
-      height: 100%;
-      //  responsive width - TODO
-      width: 8 * 220px;
-
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-
-      margin: 0 2.5rem;
-      padding: 1em 0;
+    .cards-slider--books-showcase {
+      height: 23rem;
+      width: 70vw;
     }
 
     @include mq(small) {
-      margin-left: 5%;
-      margin-right: 5%;
+      // margin-left: 5%;
+      // margin-right: 5%;
     }
 
     @include mq(medium) {
-      margin-left: 7.5%;
-      margin-right: 7.5%;
+      // margin-left: 7.5%;
+      // margin-right: 7.5%;
     }
 
     @include mq(large) {
-      margin-left: 10%;
-      margin-right: 10%;
+      // margin-left: 10%;
+      // margin-right: 10%;
 
-      &__cards-container-wrapper {
-        &__btn--prev {
-          left: -50px;
-        }
-
-        &__btn--next {
-          right: -50px;
-        }
-      }
-
-      &__cards-container {
-        //  responsive width - TODO
-        width: 8 * 185px;
-
-        padding: 0.75rem;
-        margin: 0;
+      &__cards-slider__container {
+        // padding: 0.75rem;
+        // margin: 0;
       }
     }
 
     @include mq(x-large) {
-      margin-left: 15%;
-      margin-right: 15%;
+      // margin-left: 15%;
+      // margin-right: 15%;
     }
   }
 

@@ -23,10 +23,11 @@
     "watch:sass": "sass  --no-source-map --watch assets/scss/main.scss:assets/css/main.css",
     "watch": "npm-run-all --parallel watch:*",
     "serve": "nodemon app.js",
-    "start": "npm-run-all --parallel watch serve",
+    "devStart": "npm-run-all --parallel watch serve",
     "build:sass": "sass  --no-source-map assets/scss/main.scss:assets/css/main.css",
     "build:postbuild": "postcss assets/css/*.css -u autoprefixer cssnano -r --no-map",
-    "build": "npm-run-all --parallel build:*"
+    "build": "npm-run-all --parallel build:*",
+    "start": "node app.js"
   },
   "author": "Alex Minculescu",
   "license": "ISC",
