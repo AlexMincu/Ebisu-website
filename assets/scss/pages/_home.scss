@@ -261,11 +261,14 @@ main {
     text-align: center;
 
     &__cards-container {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      display: flex;
+      flex-direction: column;
 
-      margin: 0 1.5rem;
-      gap: 2rem 1.5rem;
+      row-gap: 2rem;
+
+      width: 55%;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     &__btn {
@@ -273,29 +276,23 @@ main {
     }
 
     @include mq(small) {
-      margin-left: 10%;
-      margin-right: 10%;
-    }
-
-    @include mq(medium) {
-      margin-left: 15%;
-      margin-right: 15%;
-    }
-
-    @include mq(large) {
-      margin-left: 3rem;
-      margin-right: 3rem;
-
       &__cards-container {
-        grid-template-columns: repeat(4, 1fr);
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 2rem 1.5rem;
+
+        width: 80%;
+        max-width: 540px;
       }
     }
 
-    @include mq(x-large) {
-      margin-left: auto;
-      margin-right: auto;
+    @include mq(large) {
+      &__cards-container {
+        grid-template-columns: repeat(4, 1fr);
 
-      max-width: 1250px;
+        max-width: 1250px;
+      }
     }
   }
 
