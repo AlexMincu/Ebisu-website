@@ -58,6 +58,25 @@ async function resizeImages(imgsFolder, ...dimensions) {
             )
             .catch((err) => console.error(err));
         });
+      } else if (fileExt == 'webp') {
+        dimensions.forEach(async (dimension) => {
+          await sharp(path.join(imgsPath, file))
+            .resize(dimension)
+            .toFormat('webp')
+            .webp({
+              lossless: true,
+              quality: 60,
+              alphaQuality: 80,
+              force: false
+            })
+            .toFile(
+              path.join(
+                compressedPath,
+                fileName + '-' + dimension + '.' + 'webp'
+              )
+            )
+            .catch((err) => console.error(err));
+        });
       }
     });
   });
@@ -68,3 +87,4 @@ resizeImages('products', 600);
 resizeImages('categories', 650);
 resizeImages('books', 200);
 resizeImages('articles', 300);
+resizeImages('promos', 200);

@@ -111,6 +111,8 @@ accountBtn.addEventListener('click', () => {
 /*
  *  Popular Section
  */
+// TODO - Popular products cards
+
 const popularProductsBtn = document.querySelector('.popular-products__btn');
 
 popularProductsBtn.addEventListener('click', function () {
