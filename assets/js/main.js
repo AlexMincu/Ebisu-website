@@ -1,6 +1,39 @@
 /*
- *  Hamburger Menu
+  Logo
+  Nav buttons - lists + sublists
+  header icons
+  Cover main btn
+  Popular section: items + main btn
+  Categories
+  Promo section: items + main btn
+  Slider btns
+  Books section: item + main btn
+  Articles: items + individual btn + main btn
+  Footer?
  */
+
+/* --------------- COMPONENTS --------------- */
+
+//  Cards Slider
+const cardsSliderWrapper = document.querySelectorAll('.cards-slider__wrapper');
+const cardSliderBtnLeft = document.querySelectorAll('.cards-slider__btn--left');
+const cardSliderBtnRight = document.querySelectorAll(
+  '.cards-slider__btn--right'
+);
+
+for (const [indexSlider, slider] of cardsSliderWrapper.entries()) {
+  cardSliderBtnRight[indexSlider].addEventListener('click', () => {
+    slider.scrollLeft += slider.getBoundingClientRect().width * 0.9;
+  });
+
+  cardSliderBtnLeft[indexSlider].addEventListener('click', () => {
+    slider.scrollLeft -= slider.getBoundingClientRect().width * 0.9;
+  });
+}
+
+/* --------------- NAVIGATION --------------- */
+
+// Small Navigaton
 const menuBtn = document.querySelector('.header__menu__btn--hamburger');
 const menuIcon = document.querySelector('.header__menu__btn--hamburger__icon');
 const nav = document.querySelector('.header__menu__nav');
@@ -9,6 +42,7 @@ const navItems = document.querySelectorAll('.header__menu__nav__list__item');
 
 let showMenu = false;
 
+// Open menu
 menuBtn.addEventListener('click', () => {
   const mediaQuery = window.matchMedia('(max-width: 768px)');
 
@@ -31,6 +65,7 @@ menuBtn.addEventListener('click', () => {
   }
 });
 
+// Open submenu
 for (let i = 0; i < navItems.length; i++) {
   navItems[i].addEventListener('click', function () {
     const mediaQuery = window.matchMedia('(max-width: 768px)');
@@ -68,144 +103,122 @@ for (let i = 0; i < navItems.length; i++) {
   });
 }
 
-const navSublists = document.querySelectorAll('.header__menu__nav__sublist');
-const header = document.querySelector('.header');
+/* --------------- HEADER --------------- */
 
-const navListsItems = document.querySelectorAll(
-  '.header__menu__nav__list__item__content'
-);
-
-for (let i = 0; i < navListsItems.length; i++) {
-  const mediaQuery = window.matchMedia('(min-width: 768px)');
-
-  if (mediaQuery.matches) {
-    const ListItemContent = navListsItems[i];
-    const Sublist = ListItemContent.parentElement.querySelectorAll(
-      '.header__menu__nav__sublist'
-    );
-
-    ListItemContent.addEventListener('mouseover', () => {
-      // let temp = Sublist.getBoundingClientRect();
-      // console.log(temp.width);
-    });
-  }
-}
-
-/*
- *  Header
- */
 const searchBtn = document.querySelector('.header__btn--search');
-const cartBtn = document.querySelector('.header__btn--cart');
-const accountBtn = document.querySelector('.header__btn--account');
 
 searchBtn.addEventListener('click', () => {
-  alert(`Search button clicked - TODO`);
+  alert(`Search button clicked`);
 });
+
+const cartBtn = document.querySelector('.header__btn--cart');
+
 cartBtn.addEventListener('click', () => {
-  alert(`Cart button clicked - TODO`);
+  alert(`Cart button clicked`);
 });
+
+const accountBtn = document.querySelector('.header__btn--account');
+
 accountBtn.addEventListener('click', () => {
-  alert(`Account button clicked - TODO`);
+  alert(`Account button clicked`);
 });
 
-/*
- *  Popular Section
- */
-// TODO - Popular products cards
+/* --------------- COVER SECTION --------------- */
+const coverBtn = document.querySelector('.cover__btn');
 
+coverBtn.addEventListener('click', () => {
+  alert(`Cover button clicked`);
+});
+
+/* --------------- POPULAR SECTION    --------------- */
+// Section Btn event
 const popularProductsBtn = document.querySelector('.popular-products__btn');
 
 popularProductsBtn.addEventListener('click', function () {
   alert(
-    `TODO Button Redirect to the Products Page with a filter for Most Popular Products`
+    `Button Redirect to the Products Page with a filter for Most Popular Products`
   );
 });
 
-/*
- *  Promotions Section
- */
-const promotionsCardAddBtn = document.querySelectorAll(
-  '.promotions__card__btn'
+// Cards event
+const popularProductsCards = document.querySelectorAll(
+  '.popular-products__card'
 );
 
-promotionsCardAddBtn.forEach((item) => {
-  item.addEventListener('click', () => {
-    alert(`TODO Button Functionality to add to a cart`);
+popularProductsCards.forEach((card) => {
+  card.addEventListener('click', () => {
+    const title = card.querySelector(
+      '.popular-products__card__title'
+    ).innerText;
+    alert(`${title} Card clicked`);
   });
 });
 
+/* --------------- PROMO SECTION      --------------- */
+
+// Section Btn event
 const promotionsBtn = document.querySelector('.promotions__btn');
 
 promotionsBtn.addEventListener('click', function () {
   alert(
-    `TODO Button Redirect to the Products Page with a filter for Products in Promotions`
+    `Button Redirect to the Products Page with a filter for Products in Promotions`
   );
 });
 
-/*
- *  Categories Section
- */
+// Cards event
+const promoCards = document.querySelectorAll('.promotions__card');
+
+promoCards.forEach((card) => {
+  card.addEventListener('click', () => {
+    const title = card.querySelector('.promotions__card__title').innerText;
+    alert(`Redirect to ${title} product page`);
+  });
+});
+
+/* --------------- CATEGORIES SECTION --------------- */
+
+// Cards event
 const categoriesCards = document.querySelectorAll('.categories__card');
 
 categoriesCards.forEach((item) => {
-  // Add event listeners to all category cards buttons
-  const btn = item.childNodes[5];
+  const btn = item.querySelector('.categories__card__btn');
+  const title = item.querySelector('.categories__card__title').innerText;
+
   btn.addEventListener('click', () => {
-    alert(`TODO Button Redirect of ${item.childNodes[3].innerText}`);
+    alert(`Button Redirect to ${title} Page`);
   });
 });
 
-/*
- *  Cards Slider
- */
-const cardsSliderWrapper = document.querySelectorAll('.cards-slider__wrapper');
-const cardSliderBtnLeft = document.querySelectorAll('.cards-slider__btn--left');
-const cardSliderBtnRight = document.querySelectorAll(
-  '.cards-slider__btn--right'
-);
+/* --------------- BOOKS SECTION --------------- */
 
-for (const [indexSlider, slider] of cardsSliderWrapper.entries()) {
-  cardSliderBtnRight[indexSlider].addEventListener('click', () => {
-    slider.scrollLeft += slider.getBoundingClientRect().width * 0.9;
-  });
-  cardSliderBtnLeft[indexSlider].addEventListener('click', () => {
-    slider.scrollLeft -= slider.getBoundingClientRect().width * 0.9;
-  });
-}
-
-/*
- *  Books-showcase Section
- */
-
+// Section Btn event
 const booksBtn = document.querySelector('.books-showcase__btn');
 
 booksBtn.addEventListener('click', function () {
-  alert(`TODO Button Redirect to the Books & Manga Page`);
+  alert(`Button Redirect to the Books & Manga Page`);
 });
 
-/*
- *  Articles Section
- */
-const articlesCardsBtn = document.querySelectorAll('.articles__card__btn');
+/* --------------- ARTICLES SECTION   --------------- */
+
+// Section Btn event
 const articlesBtn = document.querySelector('.articles__btn');
 
-articlesCardsBtn.forEach((item) => {
-  item.addEventListener('click', () => {
-    alert(
-      `TODO Button Redirect of Article with title - ${item.parentElement.childNodes[3].innerText}`
-    );
+articlesBtn.addEventListener('click', () => {
+  alert(`Button Redirect to the Articles Page`);
+});
+
+// Cards event
+const articlesCards = document.querySelectorAll('.articles__card');
+
+articlesCards.forEach((card) => {
+  const title = card.querySelector('.articles__card__title');
+  const btn = card.querySelector('.articles__card__btn');
+
+  title.addEventListener('click', () => {
+    alert(`Redirect to Article '${title.innerText}'`);
+  });
+
+  btn.addEventListener('click', () => {
+    alert(`Redirect to Article '${title.innerText}'`);
   });
 });
-
-articlesBtn.addEventListener('click', () => {
-  alert(`TODO Button Redirect to the Articles Page`);
-});
-
-function include(file) {
-  var script = document.createElement('script');
-  script.src = file;
-  script.type = 'text/javascript';
-  script.defer = true;
-
-  document.getElementsByTagName('head').item(0).appendChild(script);
-}

@@ -71,6 +71,8 @@
 }
 
 .promotions__card {
+  cursor: pointer;
+
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -261,6 +263,8 @@
   }
 
   &__title {
+    cursor: pointer;
+
     font-size: 1.25rem;
     color: $clr-primary;
     word-wrap: break-word;
