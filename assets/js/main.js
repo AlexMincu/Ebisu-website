@@ -1,17 +1,3 @@
-/*
-  Logo
-  Nav buttons - lists + sublists
-  header icons
-  Cover main btn
-  Popular section: items + main btn
-  Categories
-  Promo section: items + main btn
-  Slider btns
-  Books section: item + main btn
-  Articles: items + individual btn + main btn
-  Footer?
- */
-
 /* --------------- COMPONENTS --------------- */
 
 //  Cards Slider
@@ -105,18 +91,21 @@ for (let i = 0; i < navItems.length; i++) {
 
 /* --------------- HEADER --------------- */
 
+// Search Btn
 const searchBtn = document.querySelector('.header__btn--search');
 
 searchBtn.addEventListener('click', () => {
   alert(`Search button clicked`);
 });
 
+// Cart Btn
 const cartBtn = document.querySelector('.header__btn--cart');
 
 cartBtn.addEventListener('click', () => {
   alert(`Cart button clicked`);
 });
 
+// Account Btn
 const accountBtn = document.querySelector('.header__btn--account');
 
 accountBtn.addEventListener('click', () => {
