@@ -193,7 +193,7 @@ booksBtn.addEventListener('click', function () {
 const articlesBtn = document.querySelector('.articles__btn');
 
 articlesBtn.addEventListener('click', () => {
-  alert(`Button Redirect to the Articles Page`);
+  window.location.href = `/blog`;
 });
 
 // Cards event

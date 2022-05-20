@@ -2,9 +2,7 @@
 
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Meta -->
     <meta
       name="description"
       content="Ebisu store offers you products from one of the most refined civilization - Japan"
@@ -14,210 +12,17 @@
       content="Ebisu, offer, promotion, Japan, Japanese culture, Japanese store"
     />
 
+    <!-- Title -->
     <title>Ebisu</title>
 
-    <!-- Meta -->
-    <meta charset="UTF-8" />
-    <meta name="author" content="Alexandru Minculescu" />
-    <meta name="viewport" content="width=device-width, intial-scale=1.0" />
-
-    <!-- Favicon -->
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="/assets/images/logo/favicon/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="/assets/images/logo/favicon/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="/assets/images/logo/favicon/favicon-16x16.png"
-    />
-    <link rel="manifest" href="/assets/images/logo/favicon/site.webmanifest" />
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="/assets/css/main.css" />
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Javascript -->
-    <script type="text/javascript" src="/assets/js/main.js" defer></script>
+    <%- include("../partials/head.ejs") %>
   </head>
   <body>
-    <header>
-      <div class="header">
-        <!-- MENU -->
-        <div class="header__menu">
-          <div tabindex="0" class="header__menu__btn--hamburger">
-            <span class="header__menu__btn--hamburger__icon"></span>
-          </div>
-
-          <!-- NAV BAR -->
-          <nav class="header__menu__nav">
-            <!-- NAV-LIST -->
-            <ul class="header__menu__nav__list">
-              <!-- NAV-LIST ITEM -->
-              <li class="list header__menu__nav__list__item">
-                <div class="header__menu__nav__list__item__content">
-                  <a
-                    href="/"
-                    class="header__menu__nav__list__item__content__text"
-                    >Home</a
-                  >
-                </div>
-
-                <!-- NAV-LIST ITEM -->
-              </li>
-
-              <li class="list header__menu__nav__list__item">
-                <div class="header__menu__nav__list__item__content">
-                  <span class="header__menu__nav__list__item__content__text"
-                    >Categories</span
-                  >
-                  <img
-                    class="header__menu__nav__list__item__content__icon"
-                    src="/assets/images/icons/arrow-right.svg"
-                    alt="Arrow icon"
-                  />
-                </div>
-
-                <!-- SUBLIST OF NAV-LIST ITEM -->
-                <ul class="header__menu__nav__sublist">
-                  <li class="list header__menu__nav__sublist__item">
-                    <a
-                      href="/"
-                      class="header__menu__nav__sublist__item__content"
-                    >
-                      Garments
-                    </a>
-                  </li>
-                  <li class="list header__menu__nav__sublist__item">
-                    <a
-                      href="/"
-                      class="header__menu__nav__sublist__item__content"
-                    >
-                      Footwear
-                    </a>
-                  </li>
-                  <li class="list header__menu__nav__sublist__item">
-                    <a
-                      href="/"
-                      class="header__menu__nav__sublist__item__content"
-                    >
-                      Masks
-                    </a>
-                  </li>
-                  <li class="list header__menu__nav__sublist__item">
-                    <a
-                      href="/"
-                      class="header__menu__nav__sublist__item__content"
-                    >
-                      Sweets & Tea
-                    </a>
-                  </li>
-                  <li class="list header__menu__nav__sublist__item">
-                    <a
-                      href="/"
-                      class="header__menu__nav__sublist__item__content"
-                    >
-                      Books & Manga
-                    </a>
-                  </li>
-                  <li class="list header__menu__nav__sublist__item">
-                    <a
-                      href="/"
-                      class="header__menu__nav__sublist__item__content"
-                    >
-                      Figures
-                    </a>
-                  </li>
-                  <li class="list header__menu__nav__sublist__item">
-                    <a
-                      href="/"
-                      class="header__menu__nav__sublist__item__content"
-                    >
-                      Tapestries
-                    </a>
-                  </li>
-                </ul>
-              </li>
-
-              <!-- NAV-LIST ITEM -->
-              <li class="list header__menu__nav__list__item">
-                <div class="header__menu__nav__list__item__content">
-                  <span class="header__menu__nav__list__item__content__text"
-                    >Popular</span
-                  >
-                </div>
-              </li>
-
-              <!-- NAV-LIST ITEM -->
-              <li class="list header__menu__nav__list__item">
-                <div class="header__menu__nav__list__item__content">
-                  <span class="header__menu__nav__list__item__content__text"
-                    >Sale</span
-                  >
-                </div>
-              </li>
-
-              <!-- NAV-LIST ITEM -->
-              <li class="list header__menu__nav__list__item">
-                <div class="header__menu__nav__list__item__content">
-                  <span class="header__menu__nav__list__item__content__text"
-                    >Blog</span
-                  >
-                </div>
-              </li>
-            </ul>
-          </nav>
-        </div>
-
-        <!-- LOGO -->
-        <img
-          class="icon header__icon header__icon--logo"
-          src="/assets/images/logo/logo-512px.png"
-          alt="Logo image"
-        />
-
-        <!-- TITLE -->
-        <h1 class="header__title">Ebisu</h1>
-
-        <!-- UTILITY ICONS -->
-        <div class="header__icon--utility__container">
-          <img
-            src="/assets/images/icons/search.svg"
-            alt="Search icon"
-            class="icon header__icon header__icon--utility header__btn--search"
-          />
-          <img
-            src="/assets/images/icons/cart.svg"
-            alt="Shopping Cart icon"
-            class="icon header__icon header__icon--utility header__btn--cart"
-          />
-          <img
-            src="/assets/images/icons/account.svg"
-            alt="Account icon"
-            class="icon header__icon header__icon--utility header__btn--account"
-          />
-        </div>
-      </div>
-    </header>
+    <header><%- include("../partials/header.ejs") %></header>
 
     <main>
       <div class="main__container">
-        <section class="cover">
+        <section class="cover" id="cover-section">
           <img
             src="/assets/images/homepage/cover/compressed/cover-750.jpeg"
             srcset="
@@ -225,6 +30,7 @@
               /assets/images/homepage/cover/compressed/cover-1200.jpeg 1200w,
               /assets/images/homepage/cover/compressed/cover-1500.jpeg 1500w
             "
+            sizes="100vw"
             alt="Image of a Japan Garden"
             class="img cover__img"
           />
@@ -240,7 +46,7 @@
           </div>
         </section>
 
-        <section class="popular-products">
+        <section class="popular-products" id="popular-products-section">
           <h2 class="section__title section__title--color">Popular</h2>
           <h2 class="section__title">Products</h2>
           <div class="popular-products__cards-container">
@@ -283,7 +89,7 @@
           </button>
         </section>
 
-        <section class="promotions">
+        <section class="promotions" id="promotions-section">
           <h2 class="section__title section__title--color">Promotions</h2>
 
           <div class="cards-slider cards-slider--promotions">
@@ -406,7 +212,7 @@
           </button>
         </section>
 
-        <section class="categories">
+        <section class="categories" id="categories-section">
           <h2 class="section__title section__title--color">categories</h2>
           <div class="categories__cards-container">
             <div class="categories__card">
@@ -517,7 +323,7 @@
           </div>
         </section>
 
-        <section class="books-showcase">
+        <section class="books-showcase" id="books-showcase-section">
           <h2 class="section__title section__title--color">Books & Manga</h2>
 
           <div class="cards-slider cards-slider--books-showcase">
@@ -650,7 +456,7 @@
           </button>
         </section>
 
-        <section class="articles">
+        <section class="articles" id="articles-section">
           <h2 class="section__title section__title--color">Articles</h2>
           <div class="articles__cards-container">
             <div class="articles__card">
@@ -803,7 +609,200 @@
           <button class="btn btn--full articles__btn">All articles</button>
         </section>
 
+        <section class="tasks" id="tasks-section">
+          <h2 class="tasks__title section__title section__title--color">
+            Tasks
+          </h2>
+
+          <section class="info">
+            <h3 class="info__title section__title">Useful informations</h3>
+
+            <details>
+              <summary><em> How fast does the shipment arrive? </em></summary>
+              <p>
+                It may take up to <strong>3-5 business</strong> days to ship out
+                the merchandise due to check/money order clearance.
+              </p>
+            </details>
+
+            <details>
+              <summary>
+                <em>
+                  I'm trying to make a present. Could you wrap my products?
+                </em>
+              </summary>
+              <p>Yes. Wrapping is <strong>free</strong>.</p>
+              <p>
+                Before you confirm the delivery you can check the field called
+                "Gift wrapping".
+              </p>
+            </details>
+
+            <details>
+              <summary>
+                <em>I don't like the product. Can I return it?</em>
+              </summary>
+              <p>Yes. Returning the shipment is free.</p>
+              <p>
+                You have <strong>30 days</strong> to complete a return paper.
+              </p>
+            </details>
+          </section>
+
+          <hr class="tasks__hr-break" />
+
+          <section class="iframe">
+            <!-- TODO - Move to Articles -->
+            <h3 class="iframe__title section__title">iFrames & Links</h3>
+            <div class="iframe__container">
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/103UcKj8A8I?&mute=1&playlist=103UcKj8A8I"
+                title="Video with Toka-Ebisu Festival from Osaka"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                name="ifr"
+              >
+              </iframe>
+              <div class="iframe__btn__container">
+                <a
+                  class="iframe__btn btn--transparent"
+                  target="ifr"
+                  href="https://www.youtube.com/embed/103UcKj8A8I"
+                  >Toka-Ebisu Festival from Osaka</a
+                >
+                <a
+                  class="iframe__btn btn--transparent"
+                  target="ifr"
+                  href="https://www.youtube.com/embed/7cpwMeF4ERM"
+                  >Toka-Ebisu Festival from Kyoto</a
+                >
+              </div>
+            </div>
+            <div class="iframe__source">
+              <p class="iframe__source__title">
+                Read more:
+                <a
+                  target="_blank"
+                  href="https://kansaiguide.jp/rt/eng/event/detail/?item_id=ENT0000027"
+                  >https://kansaiguide.jp/rt/eng/event/detail/?item_id=ENT0000027
+                </a>
+              </p>
+            </div>
+          </section>
+
+          <hr class="tasks__hr-break" />
+
+          <section class="layout-date">
+            <h3 class="layout-date__title section__title">Layout Data</h3>
+            <p class="layout-date__text">Your IP is:</p>
+            <p class="layout-date__ip"><%- locals.ip %></p>
+          </section>
+
+          <hr class="tasks__hr-break" />
+
+          <section class="table-section">
+            <h3 class="table__title section__title">Table task</h3>
+
+            <div class="table__wrapper">
+              <table class="tasks__table">
+                <caption>
+                  Some Table
+                </caption>
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Head 1</th>
+                    <th>Head 2</th>
+                    <th>Head 3</th>
+                    <th>Head 4</th>
+                    <th>Head 5</th>
+                    <th>Head 6</th>
+                    <th>Head 7</th>
+                    <th>Head 8</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td rowspan="2">Body Data</td>
+                    <td>Data 1.1</td>
+                    <td>Data 1.2</td>
+                    <td>Data 1.3</td>
+                    <td>Data 1.4</td>
+                    <td>Data 1.5</td>
+                    <td>Data 1.6</td>
+                    <td>Data 1.7</td>
+                    <td>Data 1.8</td>
+                  </tr>
+
+                  <tr>
+                    <td style="display: none">Row 2 Data</td>
+                    <td>Data 2.1</td>
+                    <td>Data 2.2</td>
+                    <td>Data 2.3</td>
+                    <td>Data 2.4</td>
+                    <td>Data 2.5</td>
+                    <td>Data 2.6</td>
+                    <td>Data 2.7</td>
+                    <td>Data 2.8</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td>Footer Data</td>
+                    <td>Footer 1</td>
+                    <td>Footer 2</td>
+                    <td>Footer 3</td>
+                    <td>Footer 4</td>
+                    <td>Footer 5</td>
+                    <td>Footer 6</td>
+                    <td>Footer 7</td>
+                    <td>Footer 8</td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </section>
+
+          <hr class="tasks__hr-break" />
+
+          <section class="video-player__container">
+            <h3 class="video-player__title section__title">Mount Fuji Video</h3>
+            <video
+              class="video-player__video"
+              controls
+              preload="metadata"
+              poster="/assets/videos/homepage/posters/video1_poster.jpg"
+            >
+              <source
+                src="/assets/videos/homepage/video1.mp4"
+                type="video/mp4"
+              />
+              <source
+                src="/assets/videos/homepage/video1.ogv"
+                type="video/ogv"
+              />
+
+              <track
+                default
+                src="/assets/videos/homepage/tracks/caption_video1_ro.vtt"
+                kind="captions"
+                srclang="ro"
+                label="romană"
+              />
+              <track
+                src="/assets/videos/homepage/tracks/caption_video1_en.vtt"
+                kind="captions"
+                srclang="en"
+                label="engleză"
+              />
+            </video>
+          </section>
+        </section>
+
         <section class="website-services">
+          <h2 class="section__title section__title--color"></h2>
           <div class="website-services__cards-container">
             <div class="website-services__card">
               <img
@@ -840,42 +839,6 @@
       </div>
     </main>
 
-    <footer>
-      <section class="contact">
-        <h2 class="contact__title">Contact</h2>
-        <address class="contact__container contact__address-container">
-          <span class="contact__container__text">Address: </span>
-          <a
-            href="https://www.google.ro/maps/search/Sakura+Street,+no.+23,+Bucharest,+sector+3,+Romania/@44.4181666,26.1606044,12z"
-            class="contact__container__link"
-            target="_blank"
-            >Sakura Street, no. 23, Bucharest, sector 3, Romania
-          </a>
-        </address>
-        <div class="contact__container contact__phone-container">
-          <span class="contact__container__text">Phone no: </span>
-          <a class="contact__container__link" href="tel:+4073555432"
-            >+4073 555 432
-          </a>
-        </div>
-        <div class="contact__container contact__email-container">
-          <span class="contact__container-text">Email: </span>
-          <a
-            class="contact__container__link"
-            href="mailto:ebisu_store@gmail.com"
-            >ebisu_store@gmail.com
-          </a>
-        </div>
-      </section>
-
-      <section class="copyright">
-        <small class="copyright__container">
-          <span class="copyright__container__text">Copyright &copy; Ebisu</span>
-          <time class="copyright__container__time" datetime="2021-10-19"
-            >19 October 2021</time
-          >
-        </small>
-      </section>
-    </footer>
+    <footer><%- include("../partials/footer.ejs") %></footer>
   </body>
 </html>

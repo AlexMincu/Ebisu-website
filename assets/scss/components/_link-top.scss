@@ -1,0 +1,56 @@
+@use '../abstracts/' as *;
+
+footer .link-top {
+  z-index: 99;
+
+  // The box of the link-top icon
+  &__link {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    width: 3rem;
+    height: 3rem;
+    transform: rotateZ(45deg);
+
+    border: 2px solid $clr-light-accent;
+
+    background-color: $clr-light-shades;
+    opacity: 0.6;
+
+    transition: all 300ms ease-in-out;
+  }
+
+  // The emblem inside the box of link-top icon
+  &__emblem {
+    position: absolute;
+    text-align: center;
+    left: 45%;
+    top: 45%;
+    transform: translateY(-50%) translateX(-50%) rotateZ(-45deg);
+
+    border-bottom: 1.5rem solid $clr-light-accent;
+    border-left: 1rem solid transparent;
+    border-right: 1rem solid transparent;
+    border-radius: 40%;
+
+    opacity: 0.6;
+
+    transition: all 300ms ease-in-out;
+  }
+
+  &:hover {
+    .link-top__link {
+      border-color: $clr-primary;
+      opacity: 1;
+    }
+
+    .link-top__emblem {
+      border-bottom-color: $clr-primary;
+      opacity: 1;
+    }
+  }
+
+  @media print {
+    display: none;
+  }
+}

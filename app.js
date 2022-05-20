@@ -4,22 +4,52 @@ const fs = require('fs');
 const path = require('path');
 const sharp = require('sharp');
 
+// Express Server
 const app = express();
-
 const PORT = process.env.PORT || 8080;
 
+// View engine
 app.set('view engine', 'ejs');
 
+// Static paths
+express.static(path.join(__dirname, 'views'));
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
+///// Page requests /////
+// Homepage
 app.get(['/', '/index', '/home'], (req, res) => {
-  res.status(200).render('pages/index');
+  res.status(200).render('pages/index', { ip: req.ip });
 });
 
+app.get('/*.ejs', (req, res) => {
+  res.status(403).render('pages/403');
+});
+
+// Other pages
+app.get('/*', (req, res) => {
+  console.log(req.originalUrl);
+
+  res.render('pages/' + req.url, (err, result) => {
+    if (err) {
+      if (err.message.includes('Failed to lookup')) {
+        res.status(404).render('pages/404');
+      } else {
+        res.status(400).render('pages/error');
+      }
+    } else {
+      // Send the successful result
+      res.send(result);
+    }
+  });
+});
+
+// Server port listener
 app.listen(PORT);
 
+// Custom message
 console.log(`Server ON: http://localhost:${PORT}`);
 
+// Compress Images Function
 async function resizeImages(imgsFolder, ...dimensions) {
   const imgsPath = path.join(__dirname, '/assets/images/', imgsFolder);
   const compressedPath = path.join(imgsPath, 'compressed');

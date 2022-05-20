@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <!-- Meta -->
+    <meta
+      name="description"
+      content="Ebisu store offers you products from one of the most refined civilization - Japan"
+    />
+    <meta
+      name="keywords"
+      content="Ebisu, offer, promotion, Japan, Japanese culture, Japanese store"
+    />
+
+    <!-- Title -->
+    <title>Error 404 - Ebisu</title>
+
+    <%- include("../partials/head.ejs") %>
+  </head>
+  <body>
+    <header><%- include("../partials/header.ejs") %></header>
+
+    <main>
+      <div class="main__container--403">
+        <section class="error--403">
+          <img
+            src="/assets/images/403/samurai.png"
+            alt="Samurai Image - 403 FORBIDDEN"
+            class="error--403__image"
+          />
+
+          <div class="error--403__text-container">
+            <div class="error--403__title">you shall not pass!</div>
+            <div class="error--403__code">403</div>
+            <div class="error--403__description">
+              We are sorry, but you do not have access to this page or resource.
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer><%- include("../partials/footer.ejs") %></footer>
+  </body>
+</html>

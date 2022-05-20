@@ -1,0 +1,72 @@
+@media print {
+  img,
+  iframe,
+  video {
+    display: none !important;
+  }
+
+  .card {
+    display: none !important;
+  }
+
+  .iframe {
+    display: none !important;
+  }
+
+  a {
+    color: black;
+    font-style: normal;
+    text-decoration: none;
+  }
+
+  .header__menu {
+    display: none !important;
+  }
+
+  .header {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    justify-content: center;
+
+    height: 100%;
+    width: 100%;
+
+    border: none;
+  }
+
+  h1 {
+    padding-top: 1rem;
+    text-decoration: underline;
+    font-size: 2.5rem;
+  }
+
+  .header__icon--utility__container {
+    display: none;
+  }
+
+  main {
+    page-break-after: always;
+  }
+
+  footer {
+    page-break-before: always;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin-bottom: 2cm;
+    margin-top: 2cm;
+    counter-increment: page;
+  }
+  @page: left {
+    margin-left: 2.5cm;
+    margin-right: 0.5cm;
+  }
+  @page: right {
+    margin-right: 2.5cm;
+    margin-left: 0.5cm;
+  }
+}
