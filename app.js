@@ -3,6 +3,7 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const sharp = require('sharp');
+const { object } = require('sharp/lib/is');
 
 // Express Server
 const app = express();
@@ -18,7 +19,35 @@ app.use('/assets', express.static(path.join(__dirname, 'assets')));
 ///// Page requests /////
 // Homepage
 app.get(['/', '/index', '/home'], (req, res) => {
-  res.status(200).render('pages/index', { ip: req.ip });
+  let static_gallery = JSON.parse(
+    fs
+      .readFileSync(path.join(__dirname, 'assets/json/static-gallery.json'))
+      .toString()
+  );
+  console.log(static_gallery);
+
+  res
+    .status(200)
+    .render('pages/index', { ip: req.ip, static_gallery: static_gallery });
+});
+
+app.get('/static-gallery', (req, res) => {
+  let static_gallery = JSON.parse(
+    fs
+      .readFileSync(path.join(__dirname, 'assets/json/static-gallery.json'))
+      .toString()
+  );
+
+  // Filter images - keep only the images that contains the current date month
+  static_gallery.images = static_gallery.images.filter((img) => {
+    if (img['months'].includes(new Date().getMonth())) return img;
+  });
+
+  console.log(static_gallery);
+
+  res
+    .status(200)
+    .render('pages/static-gallery', { static_gallery: static_gallery });
 });
 
 app.get('/*.ejs', (req, res) => {
@@ -118,3 +147,4 @@ resizeImages('categories', 650);
 resizeImages('books', 200);
 resizeImages('articles', 300);
 resizeImages('promos', 200);
+resizeImages(path.join('gallery', 'static'), 750, 500);
