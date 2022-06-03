@@ -27,70 +27,70 @@
       "title": "Titlu ramen",
       "alt": "Alt ramen",
       "description": "Ramen photo 4",
-      "months": [3]
+      "months": [3, 5]
     },
     {
       "file_name": "ramen",
       "title": "Titlu ramen",
       "alt": "Alt ramen",
       "description": "Ramen photo 5",
-      "months": [4]
+      "months": [4, 5]
     },
     {
       "file_name": "ramen",
       "title": "Titlu ramen",
       "alt": "Alt ramen",
       "description": "Ramen photo 6",
-      "months": [5]
+      "months": [5, 5]
     },
     {
       "file_name": "ramen",
       "title": "Titlu ramen",
       "alt": "Alt ramen",
       "description": "Ramen photo 7",
-      "months": [6]
+      "months": [6, 5]
     },
     {
       "file_name": "ramen",
       "title": "Titlu ramen",
       "alt": "Alt ramen",
       "description": "Ramen photo 8",
-      "months": [7]
+      "months": [7, 5]
     },
     {
       "file_name": "ramen",
       "title": "Titlu ramen",
       "alt": "Alt ramen",
       "description": "Ramen photo 9",
-      "months": [8]
+      "months": [8, 5]
     },
     {
       "file_name": "ramen",
       "title": "Titlu ramen",
       "alt": "Alt ramen",
       "description": "Ramen photo 10",
-      "months": [9]
+      "months": [9, 5]
     },
     {
       "file_name": "ramen",
       "title": "Titlu ramen",
       "alt": "Alt ramen",
       "description": "Ramen photo 11",
-      "months": [10]
+      "months": [10, 5]
     },
     {
       "file_name": "ramen",
       "title": "Titlu ramen",
       "alt": "Alt ramen",
       "description": "Ramen photo 12",
-      "months": [11]
+      "months": [11, 5]
     },
     {
       "file_name": "ramen",
       "title": "Titlu ramen",
       "alt": "Alt ramen",
       "description": "Ramen photo 13",
-      "months": [0]
+      "months": [0, 5]
     }
   ]
 }

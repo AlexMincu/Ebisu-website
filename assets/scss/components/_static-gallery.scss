@@ -1,8 +1,5 @@
 @use '../abstracts' as *;
 
-.main__container--static-gallery {
-}
-
 .static-gallery {
   &__title {
     margin: 2rem 0;
@@ -10,6 +7,8 @@
 
   &__container {
     margin: 1rem 2.5rem;
+
+    counter-reset: fig-no;
 
     @include mq(medium) {
       margin: 1rem 3.5rem;
@@ -36,8 +35,19 @@
   }
 
   &__figure {
-    margin-bottom: 1em;
-    border: 1px solid red;
+    margin-bottom: 3rem;
+    &:hover {
+      .static-gallery__img {
+        filter: contrast(200%);
+      }
+      .static-gallery__caption {
+        transform: scaleY(100%);
+        &__title,
+        &__description {
+          font-size: 1.25em;
+        }
+      }
+    }
 
     @include mq(large) {
       &--1 {
@@ -79,14 +89,35 @@
     }
   }
 
-  &__picture {
-  }
-
   &__img {
     width: 100%;
+    transition: all 1100ms ease-in-out;
   }
 
   &__caption {
     text-align: center;
+    background-color: $clr-light-accent;
+    width: 100%;
+
+    transform: scaleY(0%);
+    transition: all 1100ms ease-in-out;
+
+    &__title,
+    &__description {
+      transition: all 1100ms ease-in-out;
+      color: $clr-dark-shades;
+    }
+
+    &__title {
+      font-weight: 600;
+    }
+
+    &__description {
+      &::before {
+        counter-increment: fig-no;
+        content: counter(fig-no, lower-greek);
+        font-weight: 500;
+      }
+    }
   }
 }

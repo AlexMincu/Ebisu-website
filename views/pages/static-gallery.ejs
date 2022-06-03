@@ -22,43 +22,7 @@
 
     <main>
       <div class="main__container--static-gallery">
-        <section class="static-gallery">
-          <h2
-            class="section__title section__title--color static-gallery__title"
-          >
-            Static Gallery
-          </h2>
-          <div class="static-gallery__container">
-            <% let index = 1; for(let img of locals.static_gallery.images) {
-            if(index <= 12){ %>
-
-            <figure
-              class="static-gallery__figure static-gallery__figure--<%-index%>"
-            >
-              <picture class="static-gallery__picture">
-                <img
-                  class="static-gallery__img"
-                  src="<%-locals.static_gallery.path%>/compressed/<%-img.file_name%>-500.jpeg"
-                  srcset="
-                    <%-locals.static_gallery.path%>/compressed/<%-img.file_name%>-500.jpeg 500w,
-                    <%-locals.static_gallery.path%>/compressed/<%-img.file_name%>-750.jpeg 750w
-                  "
-                  sizes=" 
-                    (min-width: 768px) 50vw, 
-                    (min-width: 992px) 33vw,
-                    100vw
-                  "
-                  alt="Some ramen"
-                />
-              </picture>
-              <figcaption class="static-gallery__caption">
-                Caption for ramen-<%-index%>
-              </figcaption>
-            </figure>
-
-            <% } index++; } %>
-          </div>
-        </section>
+        <%- include("../partials/static-gallery.ejs") %>
       </div>
     </main>
 
