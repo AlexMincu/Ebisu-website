@@ -8,14 +8,15 @@
     // GRID TEMPLATING
     display: grid;
 
-    grid-template-columns: 0.95fr 0.95fr 1.1fr;
+    grid-template-columns: repeat(2, 34%) repeat(2, auto);
     grid-template-areas:
-      'cover-section cover-section cover-section'
-      'popular-products popular-products categories'
-      'promotions promotions categories'
-      'books-showcase books-showcase books-showcase'
-      'articles articles articles'
-      'website-services website-services website-services';
+      'cover-section cover-section cover-section cover-section'
+      'popular-products popular-products categories categories'
+      'promotions promotions categories categories'
+      'books-showcase books-showcase books-showcase books-showcase'
+      'articles articles articles articles'
+      'website-services website-services website-services website-services'
+      'tasks tasks tasks tasks';
 
     // GRID ELEMENTS
     .cover {
@@ -38,6 +39,10 @@
     }
     .website-services {
       grid-area: website-services;
+    }
+
+    .tasks {
+      grid-area: tasks;
     }
   }
 }

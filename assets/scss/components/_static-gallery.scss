@@ -1,0 +1,92 @@
+@use '../abstracts' as *;
+
+.main__container--static-gallery {
+}
+
+.static-gallery {
+  &__title {
+    margin: 2rem 0;
+  }
+
+  &__container {
+    margin: 1rem 2.5rem;
+
+    @include mq(medium) {
+      margin: 1rem 3.5rem;
+
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 1rem;
+    }
+
+    @include mq(large) {
+      margin: 1rem 5rem;
+
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-areas:
+        'figure-1 . figure-2'
+        '. figure-3 .'
+        'figure-4 . figure-5'
+        '. figure-6 .'
+        'figure-7 . figure-8'
+        '. figure-9 .'
+        'figure-10 . figure-11'
+        '. figure-12 .';
+    }
+  }
+
+  &__figure {
+    margin-bottom: 1em;
+    border: 1px solid red;
+
+    @include mq(large) {
+      &--1 {
+        grid-area: figure-1;
+      }
+      &--2 {
+        grid-area: figure-2;
+      }
+      &--3 {
+        grid-area: figure-3;
+      }
+      &--4 {
+        grid-area: figure-4;
+      }
+      &--5 {
+        grid-area: figure-5;
+      }
+      &--6 {
+        grid-area: figure-6;
+      }
+      &--7 {
+        grid-area: figure-7;
+      }
+      &--8 {
+        grid-area: figure-8;
+      }
+      &--9 {
+        grid-area: figure-9;
+      }
+      &--10 {
+        grid-area: figure-10;
+      }
+      &--11 {
+        grid-area: figure-11;
+      }
+      &--12 {
+        grid-area: figure-12;
+      }
+    }
+  }
+
+  &__picture {
+  }
+
+  &__img {
+    width: 100%;
+  }
+
+  &__caption {
+    text-align: center;
+  }
+}

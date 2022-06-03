@@ -275,28 +275,33 @@
             }
 
             .header__menu__nav__sublist {
-              display: block;
+              display: visible;
+              transform: scaleY(100%);
             }
           }
         }
       }
 
       &__sublist {
-        display: none;
+        display: block;
+        display: hidden;
         animation: none;
 
-        width: 18em;
+        top: 5rem;
+
+        width: 16em;
         padding: 0.5em 0;
 
         position: absolute;
-        top: 5rem;
-        left: 50%;
-        transform: translateX(-50%);
+        left: calc(50% - 8em);
 
         border: 1px solid $clr-dark-shades;
         border-top: none;
 
         background-color: $clr-light-shades;
+
+        transform: scaleY(0);
+        transition: transform 300ms ease-in-out;
 
         &__item {
           display: flex;

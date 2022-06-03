@@ -23,6 +23,7 @@ main {
   }
 
   .cover {
+    z-index: 100;
     position: relative;
     display: block;
     height: 100%;
@@ -314,6 +315,48 @@ main {
       &__cards-container {
         column-gap: 2rem;
         align-items: flex-start;
+      }
+    }
+  }
+
+  .tasks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__title {
+    }
+
+    .info {
+      &__title {
+        font-size: 1.25rem;
+      }
+      width: 80%;
+
+      details {
+        margin-bottom: 1em;
+      }
+    }
+
+    .layout-date {
+      margin: 2rem auto;
+
+      &__title {
+        font-size: 1.25rem;
+      }
+      &__text {
+        font-weight: 600;
+        font-size: 1.5em;
+
+        text-align: center;
+      }
+
+      &__ip {
+        font-size: 1.8em;
+        letter-spacing: 0.15em;
+
+        text-align: center;
+        color: $clr-dark-accent;
       }
     }
   }

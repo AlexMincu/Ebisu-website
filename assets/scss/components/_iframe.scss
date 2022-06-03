@@ -1,0 +1,74 @@
+@use '../abstracts' as *;
+
+.main__container .tasks .iframe {
+  &__title {
+    margin-bottom: 1em;
+    font-size: 1.25rem;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-left: 2rem;
+
+    iframe {
+      width: 300px;
+      border: 4px solid $clr-light-accent;
+    }
+  }
+
+  &__btn__container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__btn {
+    width: 12em;
+    height: 6em;
+
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border: 5px double $clr-light-accent;
+
+    text-align: right;
+
+    transition: all 300ms ease-in-out;
+
+    &:hover {
+      width: 14em;
+      padding-left: 2em;
+    }
+  }
+
+  &__source {
+    margin: 1em 2em;
+
+    &__title {
+    }
+
+    a {
+    }
+  }
+
+  @include mq(medium) {
+    iframe {
+      width: 500px;
+      height: 350px;
+    }
+    .iframe__container {
+      flex-direction: row;
+    }
+    .iframe__btn__container {
+      flex-direction: column;
+    }
+  }
+
+  @include mq(large) {
+    iframe {
+      width: 700px;
+      height: 425px;
+    }
+  }
+}

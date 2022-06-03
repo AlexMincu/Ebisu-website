@@ -1,0 +1,85 @@
+@use '../abstracts' as *;
+
+.table-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 80%;
+
+  margin-top: 1rem;
+
+  .table__title {
+    font-size: 1.25rem;
+  }
+
+  .table__wrapper {
+    width: 99%;
+    overflow-y: hidden;
+    overflow-x: auto;
+
+    margin-bottom: 2rem;
+  }
+
+  .tasks__table {
+    border-collapse: collapse;
+    margin: 0 auto;
+
+    caption {
+      caption-side: bottom;
+    }
+
+    th,
+    td {
+      border: 1px solid $clr-dark-shades;
+      padding: 0.5em;
+    }
+
+    thead {
+      tr th {
+        border-bottom: 2px solid $clr-dark-shades;
+
+        &:nth-child(even) {
+          border-left: 2px solid $clr-dark-accent;
+        }
+        &:nth-child(odd) {
+          border-left: 2px solid $clr-light-accent;
+        }
+
+        &:first-child {
+          border-left: 1px solid $clr-dark-shades;
+        }
+      }
+    }
+
+    tbody,
+    tfoot {
+      tr td {
+        &:nth-child(even) {
+          border-left: 2px solid $clr-dark-accent;
+        }
+        &:nth-child(odd) {
+          border-left: 2px solid $clr-light-accent;
+        }
+        &:first-child {
+          border-left: 1px solid $clr-dark-shades;
+        }
+      }
+    }
+
+    tfoot {
+      tr:first-child td {
+        border-top: 2px solid $clr-dark-shades;
+      }
+    }
+
+    tr {
+      transition: all 500ms ease-in-out;
+    }
+
+    tr:hover {
+      box-shadow: 0px 0px 5px $clr-primary inset;
+      background-color: rgba($clr-primary, 0.15);
+    }
+  }
+}

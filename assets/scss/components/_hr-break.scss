@@ -1,0 +1,30 @@
+@use '../abstracts' as *;
+
+.tasks__hr-break {
+  width: 70%;
+  height: 2px;
+
+  background-color: $clr-light-accent;
+  border: none;
+
+  &::before {
+    content: '';
+    position: absolute;
+
+    border: 5px solid transparent;
+    border-left: 20px solid $clr-light-accent;
+
+    transform: translateX(-50%) translateY(-40%);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 85%;
+
+    border: 5px solid transparent;
+    border-right: 20px solid $clr-light-accent;
+
+    transform: translateX(-50%) translateY(-40%);
+  }
+}

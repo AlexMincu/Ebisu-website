@@ -51,6 +51,37 @@ footer {
 
   .copyright {
     margin: $footer-elements-margins;
+
+    @media print {
+      &__watermark {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+
+        width: 100px;
+        height: 2cm;
+
+        border: 5px black double;
+
+        opacity: 0.65;
+
+        text-align: center;
+      }
+
+      &__banner {
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        width: 80%;
+        top: 0;
+        left: 10%;
+
+        border: 2px black dotted;
+        color: $clr-dark-shades;
+        text-align: center;
+      }
+    }
   }
 
   @include mq(large) {
