@@ -1,0 +1,50 @@
+/* 
+    --- Timings ---
+
+9 photos; 1.5s showcase, 1.5s disappearing animation = 3s each photo;
+animation-duration = 9 photos * 3s = 27s;
+
+3s/27s * 100 = 11.111s until the photo disappears.
+    5.555% - nothing happens
+    11.111% - the photo disappears
+
+100-11.111 = 88.889% the moment where the photo should be 
+    behind so the animation can continue
+*/
+
+@keyframes dynamic-gallery_animation {
+  0% {
+    z-index: 10;
+    opacity: 1;
+  }
+
+  5.555% {
+    opacity: 1;
+    transform: scaleY(100%) rotateZ(0deg);
+  }
+
+  // The middle of the photo animation
+  8.333% {
+    opacity: 1;
+    transform: scaleY(25%) rotateZ(0deg);
+  }
+
+  11.111% {
+    opacity: 0;
+    transform: scaleY(25%) rotateZ(180deg);
+  }
+
+  // Reset photo positioning
+  88.888% {
+    opacity: 0;
+    transform: scaleY(100%) rotateZ(0deg);
+  }
+
+  88.889% {
+    opacity: 1;
+  }
+
+  100% {
+    z-index: 0;
+  }
+}

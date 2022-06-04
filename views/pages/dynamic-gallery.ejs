@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <!-- Meta -->
+    <meta
+      name="description"
+      content="Ebisu store offers you products from one of the most refined civilization - Japan"
+    />
+    <meta
+      name="keywords"
+      content="Ebisu, offer, promotion, Japan, Japanese culture, Japanese store"
+    />
+
+    <!-- Title -->
+    <title>Dynamic Gallery - Ebisu</title>
+
+    <%- include("../partials/head.ejs") %>
+  </head>
+  <body>
+    <header><%- include("../partials/header.ejs") %></header>
+
+    <main>
+      <div class="main__container--dynamic-gallery">
+        <div class="dynamic-gallery">
+          <h2
+            class="section__title section__title--color dynamic-gallery__title"
+          >
+            Dynamic Gallery
+          </h2>
+          <div class="dynamic-gallery__container">
+            <% let index = 1; for(let img of locals.dynamic_gallery.images) { %>
+
+            <figure class="dynamic-gallery__figure">
+              <img
+                class="dynamic-gallery__img"
+                src="<%-locals.dynamic_gallery.path%>/compressed/<%-img.file_name%>-500.jpeg"
+                alt="<%-img.alt %>"
+              />
+
+              <figcaption class="dynamic-gallery__caption">
+                <%-img.title + index%>
+              </figcaption>
+            </figure>
+
+            <% index++} %>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer><%- include("../partials/footer.ejs") %></footer>
+  </body>
+</html>

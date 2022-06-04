@@ -17,11 +17,11 @@ express.static(path.join(__dirname, 'views'));
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
 ///// Page requests /////
-// Homepage
+//-------------------- Homepage --------------------//
 app.get(['/', '/index', '/home'], (req, res) => {
   let static_gallery = JSON.parse(
     fs
-      .readFileSync(path.join(__dirname, 'assets/json/static-gallery.json'))
+      .readFileSync(path.join(__dirname, 'assets/json/img-gallery.json'))
       .toString()
   );
   console.log(static_gallery);
@@ -31,10 +31,11 @@ app.get(['/', '/index', '/home'], (req, res) => {
     .render('pages/index', { ip: req.ip, static_gallery: static_gallery });
 });
 
+//-------------------- Static Gallery --------------------//
 app.get('/static-gallery', (req, res) => {
   let static_gallery = JSON.parse(
     fs
-      .readFileSync(path.join(__dirname, 'assets/json/static-gallery.json'))
+      .readFileSync(path.join(__dirname, 'assets/json/img-gallery.json'))
       .toString()
   );
 
@@ -50,11 +51,34 @@ app.get('/static-gallery', (req, res) => {
     .render('pages/static-gallery', { static_gallery: static_gallery });
 });
 
+//-------------------- Dynamic Gallery --------------------//
+app.get('/dynamic-gallery', (req, res) => {
+  let dynamic_gallery = JSON.parse(
+    fs
+      .readFileSync(path.join(__dirname, 'assets/json/img-gallery.json'))
+      .toString()
+  );
+
+  // Eliminate random images until the length is 9
+  while (dynamic_gallery.images.length >= 10) {
+    delete dynamic_gallery.images[
+      Math.floor(Math.random() * dynamic_gallery.images.length)
+    ];
+    dynamic_gallery.images = dynamic_gallery.images.filter(Boolean);
+  }
+
+  res.status(200).render('pages/dynamic-gallery', {
+    dynamic_gallery: dynamic_gallery,
+    img_no: dynamic_gallery.images.length
+  });
+});
+
+//-------------------- 403 Page --------------------//
 app.get('/*.ejs', (req, res) => {
   res.status(403).render('pages/403');
 });
 
-// Other pages
+//-------------------- The rest of pages --------------------//
 app.get('/*', (req, res) => {
   console.log(req.originalUrl);
 
