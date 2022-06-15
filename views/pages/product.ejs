@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <!-- Meta -->
+    <meta
+      name="description"
+      content="Ebisu store offers you products from one of the most refined civilization - Japan"
+    />
+    <meta
+      name="keywords"
+      content="Ebisu, offer, promotion, Japan, Japanese culture, Japanese store"
+    />
+
+    <!-- Title -->
+    <title>Products - Ebisu</title>
+
+    <%- include("../partials/head.ejs") %>
+  </head>
+  <body>
+    <header><%- include("../partials/header.ejs") %></header>
+
+    <main>
+      <div class="main__container--products">
+        <section class="products">
+          <h2 class="section__title section__title--color products__title">
+            All Products
+          </h2>
+
+          <div class="card product__card">
+            <img
+              src="<%-locals.product.img_path%>"
+              alt="Product ALT TODO"
+              class="img product__card__img"
+            />
+            <a
+              href="/products/<%-locals.product.id%>"
+              class="product__card__title"
+              ><%-locals.product.name%></a
+            >
+            <div class="product__card__description">
+              <%-locals.product.description%>
+            </div>
+            <div class="product__card__category">
+              <%-locals.product.category%>
+            </div>
+            <div class="product__card__subcategory">
+              <%-locals.product.subcategory%>
+            </div>
+            <div class="product__card__price"><%-locals.product.price%></div>
+            <div class="product__card__number-char">
+              <%-locals.product.number_char%>
+            </div>
+            <div class="product__card__date-char">
+              <%-locals.product.date_char%>
+            </div>
+            <div class="product__card__unique-char">
+              <%-locals.product.unique_char%>
+            </div>
+            <div class="product__card__vector-char">
+              <%-locals.product.vector_char%>
+            </div>
+            <div class="product__card__bool-char">
+              <%-locals.product.bool_char%>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer><%- include("../partials/footer.ejs") %></footer>
+  </body>
+</html>

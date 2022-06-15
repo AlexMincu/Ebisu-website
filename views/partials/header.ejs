@@ -78,8 +78,10 @@
         <!-- NAV-LIST ITEM -->
         <li class="list header__menu__nav__list__item">
           <div class="header__menu__nav__list__item__content">
-            <span class="header__menu__nav__list__item__content__text"
-              >Categories</span
+            <a
+              href="/products"
+              class="header__menu__nav__list__item__content__text"
+              >Products</a
             >
             <img
               class="header__menu__nav__list__item__content__icon"
@@ -90,41 +92,18 @@
 
           <!-- SUBLIST OF NAV-LIST ITEM -->
           <ul class="header__menu__nav__sublist">
+            <% for(let categ of locals.categories) { %>
+
             <li class="list header__menu__nav__sublist__item">
-              <a href="/" class="header__menu__nav__sublist__item__content">
-                Garments
+              <a
+                href="/products?category=<%-categ%>"
+                class="header__menu__nav__sublist__item__content"
+              >
+                <%-categ%>
               </a>
             </li>
-            <li class="list header__menu__nav__sublist__item">
-              <a href="/" class="header__menu__nav__sublist__item__content">
-                Footwear
-              </a>
-            </li>
-            <li class="list header__menu__nav__sublist__item">
-              <a href="/" class="header__menu__nav__sublist__item__content">
-                Masks
-              </a>
-            </li>
-            <li class="list header__menu__nav__sublist__item">
-              <a href="/" class="header__menu__nav__sublist__item__content">
-                Sweets & Tea
-              </a>
-            </li>
-            <li class="list header__menu__nav__sublist__item">
-              <a href="/" class="header__menu__nav__sublist__item__content">
-                Books & Manga
-              </a>
-            </li>
-            <li class="list header__menu__nav__sublist__item">
-              <a href="/" class="header__menu__nav__sublist__item__content">
-                Figures
-              </a>
-            </li>
-            <li class="list header__menu__nav__sublist__item">
-              <a href="/" class="header__menu__nav__sublist__item__content">
-                Tapestries
-              </a>
-            </li>
+
+            <% } %>
           </ul>
         </li>
 

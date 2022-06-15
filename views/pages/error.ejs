@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <!-- Meta -->
+    <meta
+      name="description"
+      content="Ebisu store offers you products from one of the most refined civilization - Japan"
+    />
+    <meta
+      name="keywords"
+      content="Ebisu, offer, promotion, Japan, Japanese culture, Japanese store"
+    />
+
+    <!-- Title -->
+    <title>Error - Ebisu</title>
+
+    <%- include("../partials/head.ejs") %>
+  </head>
+  <body>
+    <header><%- include("../partials/header.ejs") %></header>
+
+    <main>
+      <div class="main__container--404">
+        <section class="error">
+          <div class="error__title-container">
+            <div class="error__title">ERROR</div>
+            <div class="error__circle">
+              <span class="error__circle__text">404</span>
+            </div>
+          </div>
+          <p class="error__description">
+            The page you are looking for might have been removed, had its name
+            changed or is temporarily unavailable.
+          </p>
+        </section>
+      </div>
+    </main>
+
+    <footer><%- include("../partials/footer.ejs") %></footer>
+  </body>
+</html>

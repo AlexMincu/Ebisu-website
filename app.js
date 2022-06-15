@@ -12,11 +12,37 @@ const PORT = process.env.PORT || 8080;
 // View engine
 app.set('view engine', 'ejs');
 
+const { Client } = require('pg');
+
+// Connect to DB
+var client = new Client({
+  user: 'alex',
+  password: 'alex',
+  database: 'ebisu',
+  host: 'localhost',
+  port: 5432
+});
+client.connect();
+
 // Static paths
 express.static(path.join(__dirname, 'views'));
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
 ///// Page requests /////
+
+// Products categories
+let categories = [];
+
+client.query(`SELECT DISTINCT category FROM products;`, (Qerr, Qres) => {
+  if (Qerr) {
+    console.log(Qerr.stack);
+  } else {
+    for (let categ of Qres.rows) {
+      categories.push(categ.category);
+    }
+  }
+});
+
 //-------------------- Homepage --------------------//
 app.get(['/', '/index', '/home'], (req, res) => {
   let static_gallery = JSON.parse(
@@ -24,11 +50,12 @@ app.get(['/', '/index', '/home'], (req, res) => {
       .readFileSync(path.join(__dirname, 'assets/json/img-gallery.json'))
       .toString()
   );
-  console.log(static_gallery);
 
-  res
-    .status(200)
-    .render('pages/index', { ip: req.ip, static_gallery: static_gallery });
+  res.status(200).render('pages/index', {
+    ip: req.ip,
+    static_gallery: static_gallery,
+    categories: categories
+  });
 });
 
 //-------------------- Static Gallery --------------------//
@@ -44,11 +71,10 @@ app.get('/static-gallery', (req, res) => {
     if (img['months'].includes(new Date().getMonth())) return img;
   });
 
-  console.log(static_gallery);
-
-  res
-    .status(200)
-    .render('pages/static-gallery', { static_gallery: static_gallery });
+  res.status(200).render('pages/static-gallery', {
+    static_gallery: static_gallery,
+    categories: categories
+  });
 });
 
 //-------------------- Dynamic Gallery --------------------//
@@ -69,25 +95,117 @@ app.get('/dynamic-gallery', (req, res) => {
 
   res.status(200).render('pages/dynamic-gallery', {
     dynamic_gallery: dynamic_gallery,
-    img_no: dynamic_gallery.images.length
+    img_no: dynamic_gallery.images.length,
+    categories: categories
   });
+});
+
+//-------------------- Products Page --------------------//
+app.get('/products', (req, res) => {
+  let condition = 'WHERE true';
+
+  if (req.query.category) {
+    condition += ` AND category = '${req.query.category}'`;
+  }
+
+  if (req.query.name) {
+    let words = req.query.name.split(' ');
+
+    condition += ` AND (`;
+    for (let word_index = 0; word_index < words.length; word_index++) {
+      if (word_index + 1 === words.length) {
+        condition += `name ILIKE '%${words[word_index]}%'`;
+      } else {
+        condition += `name ILIKE '%${words[word_index]}%' OR `;
+      }
+    }
+    condition += `)`;
+  }
+
+  if (req.query.priceMin) {
+    condition += ` AND (price BETWEEN ${req.query.priceMin} AND ${req.query.priceMax})`;
+  }
+
+  if (req.query.in_stock) {
+    condition += ` AND in_stock = ${req.query.in_stock}`;
+  }
+
+  if (req.query.subcategory) {
+    const subcategories = req.query.subcategory.split('+');
+    condition += ' AND (';
+
+    for (
+      let subcategory_index = 0;
+      subcategory_index < subcategories.length;
+      subcategory_index++
+    ) {
+      if (subcategory_index + 1 === subcategories.length) {
+        condition += `'${subcategories[subcategory_index]}'=ANY(subcategory)`;
+      } else {
+        condition += `'${subcategories[subcategory_index]}'=ANY(subcategory) AND `;
+      }
+    }
+
+    condition += ')';
+  }
+
+  if (req.query.sortAsc) {
+    condition += ` ORDER BY ${req.query.sortAsc} ASC`;
+  }
+
+  if (req.query.sortDesc) {
+    condition += ` ORDER BY ${req.query.sortDesc} DESC`;
+  }
+
+  console.log(`SELECT * FROM products ${condition}`);
+
+  client.query(`SELECT * FROM products ${condition}`, (Qerr, Qres) => {
+    if (Qerr) {
+      console.log(Qerr.stack);
+    } else {
+      res.status(200).render('pages/products', {
+        products: Qres.rows,
+        categories: categories
+      });
+    }
+  });
+});
+
+//-------------------- Individual Product Page --------------------//
+app.get('/products/:id', (req, res) => {
+  client.query(
+    `select * from products where id = '${req.params.id}'`,
+    (Qerr, Qres) => {
+      if (Qerr) {
+        console.log(Qerr.stack);
+      } else {
+        res.status(200).render('pages/product', {
+          product: Qres.rows[0],
+          categories: categories
+        });
+      }
+    }
+  );
 });
 
 //-------------------- 403 Page --------------------//
 app.get('/*.ejs', (req, res) => {
-  res.status(403).render('pages/403');
+  res.status(403).render('pages/403', {
+    categories: categories
+  });
 });
 
 //-------------------- The rest of pages --------------------//
 app.get('/*', (req, res) => {
   console.log(req.originalUrl);
 
-  res.render('pages/' + req.url, (err, result) => {
+  res.render('pages/' + req.url, { categories: categories }, (err, result) => {
     if (err) {
       if (err.message.includes('Failed to lookup')) {
-        res.status(404).render('pages/404');
+        res.status(404).render('pages/404', { categories: categories });
       } else {
-        res.status(400).render('pages/error');
+        console.log(err);
+        res.status(400).render('pages/error', { categories: categories });
       }
     } else {
       // Send the successful result
