@@ -15,14 +15,64 @@ app.set('view engine', 'ejs');
 const { Client } = require('pg');
 
 // Connect to DB
-var client = new Client({
+const localClient = new Client({
   user: 'alex',
-  password: 'alex',
+  password: 'alaex',
   database: 'ebisu',
   host: 'localhost',
   port: 5432
 });
+
+// const connectionString =
+//   'postgres://boxjgxjmwdvlfp:770d2399d3acb1eac5a5f54c06b77fbe94dc096063e00be69088bfc7566b0fe8@ec2-52-49-120-150.eu-west-1.compute.amazonaws.com:5432/d9ommj0r1v5v7f';
+// var client = new Client({
+//   connectionString
+// });
+
+
+// const client = new Client({
+//   connectionString: 
+//   `postgres://opnawygbptmvff:7a8161cc5796b82d8d25b86214f487ed99d3bb1f2779775851f1e986a7a7febd@ec2-176-34-215-248.eu-west-1.compute.amazonaws.com:5432/df8sv1oc3dah9a`
+//   // ssl: {
+//   //   rejectUnauthorized: false
+//   // }
+// });
+
+// localClient.connect((err) => {
+//   if (err) {
+//     client.connect((err) => {
+//       if (err) {
+//         throw err;
+//       }
+//       console.log('Connected to Heroku DB');
+//     });
+//   }
+//   console.log('Connected to local DB');
+// });
+
+//////////////////////////////////////////////////////////////////
+
+// const { Client } = require('pg');
+
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
+
 client.connect();
+
+client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+  if (err) throw err;
+  for (let row of res.rows) {
+    console.log(JSON.stringify(row));
+  }
+  client.end();
+});
+
+//////////////////////////////////////////////////////////////////
+
 
 // Static paths
 express.static(path.join(__dirname, 'views'));

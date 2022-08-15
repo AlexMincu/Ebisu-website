@@ -25,6 +25,9 @@
 
     <main>
       <div class="main__container--products">
+        <h2 class="section__title section__title--color products__title">
+          All Products
+        </h2>
         <section class="products-header">
           <div class="search__container">
             <button class="btn btn--full search__btn">Search</button>
@@ -204,10 +207,6 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, dolorem.</tex
           </section>
 
           <section class="products">
-            <h2 class="section__title section__title--color products__title">
-              All Products
-            </h2>
-
             <div class="products__cards-container">
               <% for(let product of locals.products) { %>
 
@@ -225,10 +224,6 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, dolorem.</tex
                 </h3>
 
                 <div class="product__card__category"><%-product.category%></div>
-
-                <div class="product__card__description">
-                  <%-product.description%>
-                </div>
 
                 <div class="product__card__table__wrapper">
                   <img
@@ -265,6 +260,10 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, dolorem.</tex
                       </tr>
                     </tbody>
                   </table>
+                </div>
+
+                <div class="product__card__description">
+                  <%-product.description%>
                 </div>
               </article>
               <% } %>
