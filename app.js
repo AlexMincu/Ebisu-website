@@ -15,15 +15,15 @@ app.set('view engine', 'ejs');
 const { Client } = require('pg');
 
 // Connect to DB
-const localClient = new Client({
-  user: 'alex',
-  password: 'alex',
-  database: 'ebisu',
-  host: 'localhost',
-  port: 5432
-});
+// const client = new Client({
+//   user: 'alex',
+//   password: 'alex',
+//   database: 'ebisu',
+//   host: 'localhost',
+//   port: 5432
+// });
 
-const herokuClient = new Client({
+const client = new Client({
   user: 'opnawygbptmvff',
   password: '7a8161cc5796b82d8d25b86214f487ed99d3bb1f2779775851f1e986a7a7febd',
   database: 'df8sv1oc3dah9a',
@@ -35,7 +35,7 @@ const herokuClient = new Client({
 });
 
 
-herokuClient.connect();
+client.connect();
 
 //////////////////////////////////////////////////////////////////
 

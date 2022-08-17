@@ -1,12 +1,12 @@
 
 -- Users
-CREATE USER alex WITH ENCRYPTED PASSWORD 'alex';
+/*CREATE USER alex WITH ENCRYPTED PASSWORD 'alex';
 GRANT ALL PRIVILEGES ON DATABASE ebisu TO alex ;
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO alex;
 GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO alex;
 
 DROP TABLE products;
-
+*/
 -- Products table
 -- CREATE TABLE products (
 -- 	id 				SERIAL PRIMARY KEY,	--SERIAL = auto-increment
@@ -443,7 +443,7 @@ VALUES (
 	ARRAY ['?'],
 	22.75, 
 	110, 
-	'25.06.2022', 
+	'12.06.2022', 
 	'Megahouse', 
 	ARRAY ['?', '?', '?'], 
 	false),
@@ -456,7 +456,7 @@ VALUES (
 	ARRAY ['?'],
 	22.75, 
 	110, 
-	'25.06.2022', 
+	'12.06.2022', 
 	'Megahouse', 
 	ARRAY ['?', '?', '?'], 
 	false),
