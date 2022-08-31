@@ -48,3 +48,27 @@ animation-duration = 9 photos * 3s = 27s;
     z-index: 0;
   }
 }
+
+
+// Products Filter Menu
+@keyframes slide {
+
+  0% {
+    opacity: 0;
+    transform: scaleY(0%);
+    transform-origin: top;
+  }
+
+  50% {
+    transform: scaleY(0%);
+    transform-origin: top;
+
+  }
+
+  100% {
+    opacity: 1;
+    transform: scaleY(100%);
+
+  }
+
+}

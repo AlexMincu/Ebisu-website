@@ -13,7 +13,7 @@
     />
 
     <!-- Title -->
-    <title>Products - Ebisu</title>
+    <title>Ebisu - <%-locals.product.name%></title>
 
     <%- include("../partials/head.ejs") %>
   </head>
@@ -21,48 +21,76 @@
     <header><%- include("../partials/header.ejs") %></header>
 
     <main>
-      <div class="main__container--products">
-        <section class="products">
-          <h2 class="section__title section__title--color products__title">
-            All Products
+      <div class="main--product">
+        <section class="product__container">
+          <img
+            src="<%-locals.product.img_path%>"
+            alt="Product ALT TODO"
+            class="img product__img"
+          />
+
+          <h2 class="section__title section__title--color product__title">
+            <%-locals.product.name%>
           </h2>
 
-          <div class="card product__card">
-            <img
-              src="<%-locals.product.img_path%>"
-              alt="Product ALT TODO"
-              class="img product__card__img"
-            />
-            <a
-              href="/products/<%-locals.product.id%>"
-              class="product__card__title"
-              ><%-locals.product.name%></a
+          <div class="product__description">
+            <%-locals.product.description%>
+          </div>
+
+          <div class="product__category">
+            <div class="product__data__title">Category</div>
+            <span class="product__data__content"
+              ><%-locals.product.category%></span
             >
-            <div class="product__card__description">
-              <%-locals.product.description%>
-            </div>
-            <div class="product__card__category">
-              <%-locals.product.category%>
-            </div>
-            <div class="product__card__subcategory">
-              <%-locals.product.subcategory%>
-            </div>
-            <div class="product__card__price"><%-locals.product.price%></div>
-            <div class="product__card__number-char">
-              <%-locals.product.number_char%>
-            </div>
-            <div class="product__card__date-char">
-              <%-locals.product.date_char%>
-            </div>
-            <div class="product__card__unique-char">
-              <%-locals.product.unique_char%>
-            </div>
-            <div class="product__card__vector-char">
-              <%-locals.product.vector_char%>
-            </div>
-            <div class="product__card__bool-char">
-              <%-locals.product.bool_char%>
-            </div>
+          </div>
+
+          <div class="product__subcategory">
+            <div class="product__data__title">Subcategory</div>
+            <span class="product__data__content"
+              ><%-locals.product.subcategory%></span
+            >
+          </div>
+
+          <div class="product__price">
+            <div class="product__data__title">Price</div>
+            <span class="product__data__content"
+              ><%-locals.product.price%></span
+            >
+          </div>
+
+          <div class="product__number-char">
+            <div class="product__data__title">Number-Char</div>
+            <span class="product__data__content"
+              ><%-locals.product.number_char%></span
+            >
+          </div>
+
+          <div class="product__date-char">
+            <div class="product__data__title">Data-Char</div>
+            <span class="product__data__content"
+              ><%-locals.product.date_char%></span
+            >
+          </div>
+
+          <div class="product__unique-char">
+            <div class="product__data__title">Unique-Char</div>
+            <span class="product__data__content"
+              ><%-locals.product.unique_char%></span
+            >
+          </div>
+
+          <div class="product__vector-char">
+            <div class="product__data__title">Vector-Char</div>
+            <span class="product__data__content"
+              ><%-locals.product.vector_char%></span
+            >
+          </div>
+
+          <div class="product__in-stock">
+            <div class="product__data__title">In-Stock</div>
+            <span class="product__data__content"
+              ><%-locals.product.in_stock%></span
+            >
           </div>
         </section>
       </div>

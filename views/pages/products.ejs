@@ -23,254 +23,228 @@
   <body>
     <header><%- include("../partials/header.ejs") %></header>
 
-    <main>
-      <div class="main__container--products">
-        <h2 class="section__title section__title--color products__title">
-          All Products
-        </h2>
-        <section class="products-header">
-          <div class="search__container">
-            <button class="btn btn--full search__btn">Search</button>
+    <main class="main--products">
+      <h2 class="section__title section__title--color">All Products</h2>
 
-            <div class="search__input__container">
-              <label class="search__input__label">
-                <input class="search__input--text" type="text" value="" />
-              </label>
-            </div>
-          </div>
+      <section class="header--products">
+        <div class="search__container">
+          <button class="btn btn--full search__btn">Search</button>
 
-          <div class="sort__container">
-            <!-- select simplu -->
-            <div class="sort__input__container">
-              <label class="sort__input__label">
-                Sort by:
-                <select class="sort__input__simple-select--sort-by">
-                  <option value="price" selected>Price</option>
-                  <option value="date">Date</option>
-                </select>
-              </label>
-            </div>
+          <label>
+            <input class="search__input--text" type="text" value="" />
+          </label>
+        </div>
+
+        <div class="sort__container">
+          <label>
+            Sort by:
+
+            <select class="sort__input--select">
+              <option value="price" selected>Price</option>
+              <option value="date">Date</option>
+            </select>
+          </label>
+
+          <div class="sort__btn-wrapper">
             <button class="btn btn--full sort__btn sort__btn--ascendent">
               Sort Ascendent
             </button>
+
             <button class="btn btn--full sort__btn sort__btn--descendent">
               Sort Descendent
             </button>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <div class="filters-products-wrapper">
-          <section class="filters">
-            <h2 class="section__title filters__title">Filters</h2>
+      <section class="content">
+        <section class="filters">
+          <h3 class="section__title">Filters</h3>
 
-            <div class="filters__btns-wrapper">
-              <button class="btn btn--full filters__btn filters__btn--filter">
-                Filter
-              </button>
-              <button
-                class="btn btn--transparent filters__btn filters__btn--reset"
-              >
-                Reset
-              </button>
-            </div>
+          <!-- Filter buttons -->
+          <div class="filters__btn-wrapper">
+            <button class="btn btn--full filters__btn--filters">
+              Filters<span class="filters__btn--filters__arrow"></span>
+            </button>
+            <button class="btn btn--transparent filters__btn--reset">
+              Reset
+            </button>
+          </div>
 
-            <div class="filters__container">
-              <!-- range -->
+          <div class="filters__container">
+            <!-- Price - Range Input -->
 
-              <!-- Calculate the min and max price of shown products-->
-              <% let prices = []; for(let product of locals.products) {
-              prices.push(product.price); } let minPrice =
-              Math.floor(Math.min(...prices)); let maxPrice =
-              Math.ceil(Math.max(...prices)); let averagePrice =
-              Math.floor((minPrice + maxPrice) / 2) %>
+            <!-- Calculate the min and max price of shown products-->
+            <% let prices = []; for(let product of locals.products) {
+            prices.push(product.price); } let minPrice =
+            Math.floor(Math.min(...prices)); let maxPrice =
+            Math.ceil(Math.max(...prices)); let averagePrice =
+            Math.floor((minPrice + maxPrice) / 2) %>
 
-              <label class="filters__input__label"> Minimum Price: </label>
-              <span class="filters__input--range--min-value"
-                ><%-averagePrice%></span
-              >
+            <label class="filters__label--range filters__label--range-min">
+              Minimum Price:
+              <input
+                class="filters__input--range--min"
+                type="range"
+                min="<%-minPrice%>"
+                value="<%-minPrice%>"
+                max="<%-maxPrice%>"
+                step="1"
+              />
+            </label>
 
-              <div class="filters__input__container">
-                <span class="filters__input--range-before"><%-minPrice%></span>
+            <label class="filters__label--range filters__label--range-max">
+              Maximum Price:
+              <input
+                class="filters__input--range--max"
+                type="range"
+                min="<%-minPrice%>"
+                value="<%-maxPrice%>"
+                max="<%-maxPrice%>"
+                step="1"
+              />
+            </label>
+
+            <!-- Categories - Radio Input -->
+            <div class="filters__container__input--radio">
+              Categories: <% for(let categ of locals.categories) { %>
+              <label class="filters__label--radio">
+                <span class="filters__input--radio__text"><%-categ%></span>
                 <input
-                  class="filters__input--range filters__input--range--min"
-                  type="range"
-                  min="<%-minPrice%>"
-                  value="<%-minPrice%>"
-                  max="<%-maxPrice%>"
-                  step="1"
+                  name="filters__input--category"
+                  value="<%-categ%>"
+                  type="radio"
                 />
-                <span class="filters__input--range-after"><%-maxPrice%></span>
-              </div>
-
-              <label class="filters__input__label"> Maximum Price: </label>
-              <span class="filters__input--range--max-value"
-                ><%-averagePrice%></span
-              >
-
-              <div class="filters__input__container">
-                <span class="filters__input--range-before"><%-minPrice%></span>
-                <input
-                  class="filters__input--range filters__input--range--max"
-                  type="range"
-                  min="<%-minPrice%>"
-                  value="<%-maxPrice%>"
-                  max="<%-maxPrice%>"
-                  step="1"
-                />
-                <span class="filters__input--range-after"><%-maxPrice%></span>
-              </div>
-
-              <!-- radio -->
-              <div class="filters__input__container">
-                <label class="filters__input__label">
-                  Categories:
-                  <div class="filters__input--radio">
-                    <% for(let categ of locals.categories) { %>
-                    <label class="filters__input--radio-label">
-                      <input
-                        name="filters__input--radio-name"
-                        value="<%-categ%>"
-                        type="radio"
-                      /><%-categ%>
-                    </label>
-                    <% } %>
-                  </div>
-                </label>
-              </div>
-
-              <!-- select multiplu -->
-              <div class="filters__input__container">
-                <label class="filters__input__label">
-                  Subcategories:
-                  <select
-                    class="filters__input--multiple-select"
-                    multiple
-                    size="5"
-                  >
-                    <% let subcategories = []; for(let product of
-                    locals.products) { for(let subcateg of product.subcategory)
-                    { if(!subcategories.includes(subcateg)){
-                    subcategories.push(subcateg); } } } %> <% let index =
-                    1;for(let subcategory of subcategories) { %>
-                    <option
-                      class="filters__input--multiple-select-option"
-                      value="<%-index++%>>"
-                    >
-                      <%-subcategory%>
-                    </option>
-                    <% } %>
-                  </select>
-                </label>
-              </div>
-
-              <!-- checkbox -->
-              <div class="filters__input__container">
-                <label class="filters__input__label">
-                  In-stock:
-                  <input
-                    class="filters__input--checkbox"
-                    name="filters__input--checkbox-name"
-                    checked
-                    value="1"
-                    type="checkbox"
-                  />
-                </label>
-              </div>
-
-              <!-- datalist -->
-              <div class="filters__input__container">
-                <label class="filters__input__label">
-                  Datalist:
-                  <input
-                    disabled
-                    list="filters__input--datalist-id"
-                    class="filters__input--datalist"
-                  />
-                  <datalist id="filters__input--datalist-id">
-                    <option value="data1">Datalist 1</option>
-                    <option value="data2">Datalist 2</option>
-                    <option value="data3">Datalist 3</option>
-                  </datalist>
-                </label>
-              </div>
-
-              <!-- textarea -->
-              <div class="filters__input__container">
-                <label class="filters__input__label">
-                  TextArea:
-                  <textarea disabled class="filters__input--textarea">
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, dolorem.</textarea
-                  >
-                </label>
-              </div>
-            </div>
-          </section>
-
-          <section class="products">
-            <div class="products__cards-container">
-              <% for(let product of locals.products) { %>
-
-              <article
-                id="art<%-product.id%>"
-                class="card product__card <%-product.category%>"
-              >
-                <h3 class="product__card__title">
-                  <a
-                    href="/products/<%-product.id%>"
-                    class="product__card__title__link"
-                  >
-                    <%-product.name%>
-                  </a>
-                </h3>
-
-                <div class="product__card__category"><%-product.category%></div>
-
-                <div class="product__card__table__wrapper">
-                  <img
-                    src="<%-product.img_path%>"
-                    alt="Product ALT TODO"
-                    class="img product__card__img"
-                  />
-
-                  <table class="product__card__table">
-                    <tbody>
-                      <tr>
-                        <td>Price</td>
-                        <td><%-product.price%></td>
-                      </tr>
-                      <tr>
-                        <td>Unique Char</td>
-                        <td><%-product.unique_char%></td>
-                      </tr>
-                      <tr>
-                        <td>Subcategories</td>
-                        <td><%-product.subcategory%></td>
-                      </tr>
-                      <tr>
-                        <td>Date Char</td>
-                        <td>
-                          <time
-                            ><%-product.date_char.toLocaleDateString()%></time
-                          >
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Boolean Char</td>
-                        <td><%-product.in_stock%></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-
-                <div class="product__card__description">
-                  <%-product.description%>
-                </div>
-              </article>
+                <span class="filters__input--radio__checkmark"></span>
+              </label>
               <% } %>
             </div>
-          </section>
-        </div>
-      </div>
+
+            <!-- Subcategories - Multiple Select Input -->
+
+            <label class="filters__label--multiple">
+              Subcategories:
+
+              <select class="filters__input--multiple" multiple size="5">
+                <!-- Create a subcategories list -->
+                <% let subcategories = []; for(let product of locals.products){
+                for(let subcateg of product.subcategory) {
+                if(!subcategories.includes(subcateg)){
+                subcategories.push(subcateg); } } } %>
+
+                <!-- Add all subcategories as options of the multiple select -->
+                <% let index = 1;for(let subcategory of subcategories) { %>
+
+                <option value="<%-index++%>>"><%-subcategory%></option>
+
+                <% } %>
+              </select>
+            </label>
+
+            <!-- TODO - Datalist Input -->
+
+            <label class="filters__label--datalist">
+              Datalist:
+
+              <input disabled list="filters__input--datalist-id" />
+
+              <datalist id="filters__input--datalist-id">
+                <option value="data1">Datalist 1</option>
+                <option value="data2">Datalist 2</option>
+                <option value="data3">Datalist 3</option>
+              </datalist>
+            </label>
+
+            <!-- TODO - Text Area Input -->
+
+            <label class="filters__label--text-area">
+              TextArea:
+
+              <textarea disabled>
+                Lorem ipsum dolor sit amet consectetur. 
+              </textarea>
+            </label>
+
+            <!-- In-stock - Checkbox Input -->
+
+            <label class="filters__label--checkbox">
+              In-stock:
+
+              <input
+                name="filters__input--checkbox"
+                unchecked
+                value="1"
+                type="checkbox"
+              />
+            </label>
+
+            <button class="btn btn--full filters__btn--filter">Filter</button>
+          </div>
+        </section>
+
+        <section class="products">
+          <div class="products__cards-container">
+            <!-- Add each product received from the server to the page-->
+            <% for(let product of locals.products) { %>
+
+            <article
+              id="art<%-product.id%>"
+              class="card product__card <%-product.category%>"
+            >
+              <h3 class="product__card__title">
+                <a
+                  href="/products/<%-product.id%>"
+                  class="product__card__title__link"
+                >
+                  <%-product.name%>
+                </a>
+              </h3>
+
+              <div class="product__card__category"><%-product.category%></div>
+
+              <div class="product__card__table-wrapper">
+                <img
+                  src="<%-product.img_path%>"
+                  alt="Image of <%-product.name%>"
+                  class="product__card__img"
+                />
+
+                <table class="product__card__table">
+                  <tbody>
+                    <tr>
+                      <td>Price</td>
+                      <td><%-product.price%></td>
+                    </tr>
+                    <tr>
+                      <td>Unique Char</td>
+                      <td><%-product.unique_char%></td>
+                    </tr>
+                    <tr>
+                      <td>Subcategories</td>
+                      <td><%-product.subcategory%></td>
+                    </tr>
+                    <tr>
+                      <td>Date Char</td>
+                      <td>
+                        <time><%-product.date_char.toLocaleDateString()%></time>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Boolean Char</td>
+                      <td><%-product.in_stock%></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="product__card__description">
+                <%-product.description%>
+              </div>
+            </article>
+            <% } %>
+          </div>
+        </section>
+      </section>
     </main>
 
     <footer><%- include("../partials/footer.ejs") %></footer>
