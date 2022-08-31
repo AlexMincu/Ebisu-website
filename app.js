@@ -24,6 +24,7 @@ const { Client } = require('pg');
 // });
 
 // Connect to Heroku DB
+
 const client = new Client({
   user: 'opnawygbptmvff',
   password: '7a8161cc5796b82d8d25b86214f487ed99d3bb1f2779775851f1e986a7a7febd',
