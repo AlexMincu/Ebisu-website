@@ -13,29 +13,37 @@ const PORT = process.env.PORT || 8080;
 app.set('view engine', 'ejs');
 
 const { Client } = require('pg');
+let client;
 
-// Connect to local DB
-// const client = new Client({
-//   user: 'alex',
-//   password: 'alex',
-//   database: 'ebisu',
-//   host: 'localhost',
-//   port: 5432
-// });
+if(process.env.HEROKU_ON) { // Connect to Heroku DB
 
-// Connect to Heroku DB
+  const webProtocol = 'https://';
+  const webDomain = 'ebisu-shop.herokuapp.com';
 
-const client = new Client({
-  user: 'opnawygbptmvff',
-  password: '7a8161cc5796b82d8d25b86214f487ed99d3bb1f2779775851f1e986a7a7febd',
-  database: 'df8sv1oc3dah9a',
-  host: 'ec2-176-34-215-248.eu-west-1.compute.amazonaws.com',
-  port: 5432,
-  ssl: {
-    rejectUnauthorized: false
-  }
-});
+  client = new Client({
+    user: 'opnawygbptmvff',
+    password: '7a8161cc5796b82d8d25b86214f487ed99d3bb1f2779775851f1e986a7a7febd',
+    database: 'df8sv1oc3dah9a',
+    host: 'ec2-176-34-215-248.eu-west-1.compute.amazonaws.com',
+    port: 5432,
+    ssl: {
+      rejectUnauthorized: false
+    }
+  });
 
+} else { // Connect to local DB
+
+  const webProtocol = 'http://';
+  const webDomain = 'localhost:8080';
+
+  client = new Client({
+    user: 'alex',
+    password: 'alex',
+    database: 'ebisu',
+    host: 'localhost',
+    port: 5432
+  });
+}
 
 client.connect();
 
