@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <!-- Meta -->
+    <meta
+      name="description"
+      content="Ebisu store offers you products from one of the most refined civilization - Japan"
+    />
+    <meta
+      name="keywords"
+      content="Ebisu, offer, promotion, Japan, Japanese culture, Japanese store"
+    />
+
+    <!-- Title -->
+    <title>Register - Ebisu</title>
+
+    <%- include("../partials/head.ejs") %>
+
+    <!-- Javascript -->
+    <script src="/assets/js/register.js" defer></script>
+  </head>
+  <body>
+    <header><%- include("../partials/header.ejs") %></header>
+
+    <main class="main--register">
+      <h2 class="section__title section__title--color">Register</h2>
+
+      <div class="register__container">
+        <form
+          class="register__form"
+          method="post"
+          action="/register"
+          enctype="multipart/form-data"
+        >
+          <label class="register__label--username">
+            <input
+              type="text"
+              class="register__input--username"
+              name="username"
+              placeholder="Username"
+              required
+              pattern="[A-Za-z0-9]+"
+            />
+          </label>
+
+          <label class="register__label--first-name">
+            <input
+              type="text"
+              class="register__input--first-name"
+              name="first_name"
+              placeholder="First Name"
+              pattern="[A-Za-z]+"
+              required
+            />
+          </label>
+
+          <label class="register__label--last-name">
+            <input
+              type="text"
+              class="register__input--last-name"
+              name="last_name"
+              placeholder="Last Name"
+              pattern="[A-Za-z]+"
+              required
+            />
+          </label>
+
+          <label class="register__label--password">
+            <input
+              type="password"
+              class="register__input--password"
+              name="password"
+              placeholder="Password"
+              required
+            />
+          </label>
+
+          <label class="register__label--password2">
+            <input
+              type="password"
+              class="register__input--password2"
+              name="password2"
+              placeholder="Confirm Password"
+              required
+            />
+          </label>
+
+          <label class="register__label--email">
+            <input
+              type="text"
+              class="register__input--email"
+              name="email"
+              placeholder="Email"
+              required
+            />
+          </label>
+
+          <label class="register__label--chat-color">
+            Chat Color:
+
+            <select class="register__input--chat-color" name="chat_color">
+              <option value="black" selected>Black</option>
+            </select>
+          </label>
+
+          <label class="register__label--sight-problem">
+            Sight Problem:
+
+            <input
+              class="register__input--sight-problem"
+              name="sight-problem"
+              unchecked
+              value="1"
+              type="checkbox"
+            />
+          </label>
+
+          <label class="register__label--profile-picture">
+            Profile Picture:
+
+            <input
+              type="file"
+              class="register__input--profile-picture"
+              name="profile-picture"
+            />
+          </label>
+
+          <div class="register__btn-wrapper">
+            <input
+              class="btn btn--full register__btn--register"
+              type="submit"
+              value="Register"
+            />
+            <input
+              class="btn btn--transparent register__btn--reset"
+              type="reset"
+              value="Reset"
+            />
+          </div>
+        </form>
+
+        <div class="register__response__container">
+          <% if(locals.err) { %> <% for(let error of locals.err) { %>
+          <p class="register__response--error"><%- error %></p>
+          <% }} %> <% if(locals.response) { %>
+          <p class="register__response--successfull"><%- locals.response %></p>
+          <% } %>
+        </div>
+      </div>
+    </main>
+
+    <footer><%- include("../partials/footer.ejs") %></footer>
+  </body>
+</html>

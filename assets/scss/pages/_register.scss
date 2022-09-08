@@ -1,0 +1,75 @@
+.main--register {}
+
+.register {
+    &__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        label {
+            display: block;
+            margin: 0.5rem 2rem;
+        }
+    }
+
+    &__form {}
+
+    &__btn {
+        &--register {}
+
+        &--reset {}
+    }
+
+    &__label {
+
+        &--username {}
+
+        &--first-name {}
+
+        &--last-name {}
+
+        &--password,
+        &--password2 {}
+
+        &--email {}
+
+        &--chat-color {}
+
+        &--sight-problem {}
+
+        &--profile-picture {}
+    }
+
+    &__input {
+        &--username {}
+
+        &--first-name {}
+
+        &--last-name {}
+
+        &--password,
+        &--password2 {}
+
+        &--email {}
+
+        &--chat-color {}
+
+        &--sight-problem {}
+
+        &--profile-picture {}
+    }
+
+    &__response {
+        &__container {
+            margin: 3rem 2rem;
+        }
+
+        &--error {
+            color: red;
+        }
+
+        &--successfull {
+            color: green;
+        }
+    }
+}

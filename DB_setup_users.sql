@@ -1,9 +1,19 @@
+CREATE TYPE user_role AS ENUM('admin', 'moderator', 'client');
 
--- DB Admin
-CREATE USER alex WITH ENCRYPTED PASSWORD 'alex';
-GRANT ALL PRIVILEGES ON DATABASE ebisu TO alex ;
-GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO alex;
-GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO alex;
+CREATE TABLE IF NOT EXISTS users (
+	id 					SERIAL PRIMARY KEY,		--SERIAL = auto-increment
+	username 			VARCHAR(50) 	UNIQUE NOT NULL,
+	last_name 			VARCHAR(100) 	NOT NULL,
+   	first_name 			VARCHAR(100) 	NOT NULL,
+   	password 			VARCHAR(500) 	NOT NULL,
+	token				VARCHAR(100)	NOT NULL,
+	email				VARCHAR(100)	NOT NULL,
+	registration_date 	TIMESTAMP 		DEFAULT current_timestamp,
+   	chat_color 			VARCHAR(50) 	DEFAULT 'black',
+   	role 				user_role 		NOT NULL DEFAULT 'client',
+	sight_problem 		BOOLEAN 		DEFAULT false,
+	profile_picture 	VARCHAR(200)
+);
 
 	-- Garments
 

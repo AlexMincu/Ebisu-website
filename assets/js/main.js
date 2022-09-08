@@ -109,7 +109,7 @@ cartBtn.addEventListener('click', () => {
 const accountBtn = document.querySelector('.header__btn--account');
 
 accountBtn.addEventListener('click', () => {
-  alert(`Account button clicked`);
+  window.location.href = `/register`;
 });
 
 /* --------------- COVER SECTION --------------- */

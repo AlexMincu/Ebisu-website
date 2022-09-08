@@ -4,6 +4,8 @@ const fs = require('fs');
 const path = require('path');
 const sharp = require('sharp');
 const { object } = require('sharp/lib/is');
+const formidable = require('formidable');
+const crypto = require('crypto');
 
 // Express Server
 const app = express();
@@ -13,6 +15,7 @@ const PORT = process.env.PORT || 8080;
 app.set('view engine', 'ejs');
 
 const { Client } = require('pg');
+const { text, query } = require('express');
 let client;
 
 if(process.env.HEROKU_ON) { // Connect to Heroku DB
@@ -225,13 +228,13 @@ app.get('/*.ejs', (req, res) => {
 app.get('/*', (req, res) => {
   console.log(req.originalUrl);
 
-  res.render('pages/' + req.url, { categories: categories }, (err, result) => {
+  res.render('pages/' + req.url, { categories: categories, err: "" }, (err, result) => {
     if (err) {
       if (err.message.includes('Failed to lookup')) {
-        res.status(404).render('pages/404', { categories: categories });
+        res.status(404).render('pages/404', { categories: categories, err: "" });
       } else {
         console.log(err);
-        res.status(400).render('pages/error', { categories: categories });
+        res.status(400).render('pages/error', { categories: categories, err: "" });
       }
     } else {
       // Send the successful result
@@ -239,6 +242,139 @@ app.get('/*', (req, res) => {
     }
   });
 });
+
+const encryptSecret = "saltul_ebisu";
+const alphaNumString = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
+let profilePictureFilePath;
+
+function generateToken(length) {
+  randomString = "";
+  for(let i = 0; i < length; i++) {
+    randomString += alphaNumString[ Math.floor( Math.random() * alphaNumString.length ) ];
+  }
+  return randomString;
+}
+
+
+app.post("/register", (req, res) => {
+  const form = new formidable.IncomingForm();
+
+  let username;
+
+  form.parse(req, (err, textFields, fileFields) => {
+    console.log(textFields);
+
+    let errors = [];
+
+    // TODO - Required field missing
+    if(!textFields.username) {
+      errors.push("Missing Username");
+    }
+    if(!textFields.first_name) {
+      errors.push("Missing First Name");
+    }
+    if(!textFields.last_name) {
+      errors.push("Missing Last Name");
+    }
+    if(!textFields.password) {
+      errors.push("Missing Password");
+    }
+    if(!textFields.password2) {
+      errors.push("Missing Password confirmation");
+    }
+    if(!textFields.email) {
+      errors.push("Missing Email");
+    }
+
+
+    // Fields requirements
+    if(!textFields.username.match("^[a-zA-Z0-9]{5,20}$")) {
+      errors.push("Username must contain between 5 and 20 letters and/or digits")
+    }
+
+    if(!textFields.password.match("^(?=(.*[0-9]){2,})(?=.*[.])(?=.*[a-z])(?=.*[A-Z]).{5,}$")) {
+      errors.push('Password must contain at least two numbers, both lower and uppercase letters and at least one dot (".")')
+    }
+
+    if(!textFields.email.match("^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$")) {
+      errors.push("Email is not valid");
+    }
+
+    console.log(errors);
+    if (errors != ""){
+      res.render("pages/register", {categories: categories, err: errors});
+      return;
+    }
+    
+    client.query(`select username from users where username='${textFields.username}'`, (err, queryRes) => {
+      if(err) {
+        console.log(err);
+        res.render("pages/register", {categories: categories, err: "Database Error"})
+      }
+      else {
+        // If username doesn't exist in DB
+        if(queryRes.rows.length == 0) {
+          
+          const encryptedPassword = crypto.scryptSync(textFields.password, encryptSecret, 32).toString('hex');
+          const token = generateToken(100);
+
+          const queryAddUser = `INSERT INTO users (username, first_name, last_name, password, token, email, chat_color, profile_picture) VALUES ('${textFields.username}','${textFields.first_name}','${textFields.last_name}', $1, '${token}', '${textFields.email}','${textFields.chat_color}', '${profilePictureFilePath}')`; 
+
+          client.query(queryAddUser, [encryptedPassword], (err, queryRes) => {
+              if(err) {
+                console.log(err);
+                res.render("pages/register", {categories: categories, err: "Database Error"});
+              }
+              else {
+                // TODO - Send Email
+
+                // Render page
+                res.render("pages/register", {categories: categories, response: "Account created successfully"})
+              }
+          })
+
+
+        }
+        else {
+          errors.push("Username already exists");
+          res.render("pages/register", {categories: categories, err: errors});
+        }
+      }
+    })
+
+  })
+
+  form.on("field", (textFieldName, textFieldValue) => {   // textFields
+    if(textFieldName == "username") {
+      username = textFieldValue;
+    }
+  })
+
+  form.on("fileBegin", (fileFieldName, file) => {
+    if(!file.originalFilename) {
+      return;
+    }
+
+    const userFolderPath = path.join(__dirname, 'users_files', username);
+    if(!fs.existsSync(userFolderPath)) {
+      fs.mkdirSync(userFolderPath);
+
+      fileName = file.originalFilename.split('.');
+      fileExtension = '.' + fileName[fileName.length-1];
+
+      file.filepath = userFolderPath + "/profile_picture" + fileExtension;
+
+      profilePictureFilePath = file.filepath; // global variable
+    }
+
+  })
+
+  form.on("file", (fileFieldName, file) => {
+    console.log("File uploaded.");
+  })
+})
+
 
 // Server port listener
 app.listen(PORT);

@@ -1,9 +1,83 @@
+/*
+-- Garments
+subcategory - type of garment
+number_char - 
+date_char 	- 
+unique_char - gender (male, female, kids)
+vector_char - materials
 
--- DB Admin
-CREATE USER alex WITH ENCRYPTED PASSWORD 'alex';
-GRANT ALL PRIVILEGES ON DATABASE ebisu TO alex ;
-GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO alex;
-GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO alex;
+-- Footwear
+subcategory - type of footwear
+number_char - ?size
+date_char - 
+unique_char - gender
+vector_char - materials
+
+-- Masks
+subcategory - type of masks
+number_char - ?size
+date_char -   
+unique_char - gender
+vector_char - materials
+
+-- Sweets
+subcategory - type
+number_char - ?calories/100g
+date_char - 
+unique_char - producer
+vector_char - ?ingredients
+
+-- Books
+subcategory - type (novel, manga, etc), cover-type
+number_char - pages_no
+date_char 	- published_date
+unique_char - author
+vector_char - genres
+
+-- Figures
+subcategory - 
+number_char - figure height in mm
+date_char 	- date-available
+unique_char - producer
+vector_char - 
+
+-- Tapestries
+subcategory - 
+number_char -
+date_char 	- 
+unique_char - producer
+vector_char - dimensions
+
+*/
+
+CREATE TABLE IF NOT EXISTS products (
+	id 				SERIAL PRIMARY KEY,		--SERIAL = auto-increment
+	name 			varchar(100)	NOT NULL, 
+	description 	varchar(1000) 	NOT NULL, 
+	img_path 		varchar(200) 	NOT NULL, 
+	category 		varchar(100) 	NOT NULL,
+	subcategory 	varchar(50)[] 	NOT NULL,
+	price			real 			NOT NULL,
+	number_char		int 			NOT NULL,
+	date_char		date 			NOT NULL,
+	unique_char		varchar(100) 	NOT NULL,
+	vector_char		varchar(50)[] 	NOT NULL,
+	in_stock		boolean 		NOT NULL
+);
+
+INSERT INTO products (
+	name, 
+	description, 
+	img_path, 
+	category, 
+	subcategory, 
+	price, 
+	number_char, 
+	date_char, 
+	unique_char, 
+	vector_char, 
+	in_stock)
+VALUES (
 
 	-- Garments
 
