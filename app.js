@@ -6,6 +6,7 @@ const sharp = require('sharp');
 const { object } = require('sharp/lib/is');
 const formidable = require('formidable');
 const crypto = require('crypto');
+const helmet = require('helmet');
 
 // Express Server
 const app = express();
@@ -13,6 +14,8 @@ const PORT = process.env.PORT || 8080;
 
 // View engine
 app.set('view engine', 'ejs');
+
+app.use(helmet.frameguard()); // Block iframes
 
 const { Client } = require('pg');
 const { text, query } = require('express');
