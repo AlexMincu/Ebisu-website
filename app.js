@@ -27,10 +27,10 @@ if(process.env.HEROKU_ON) { // Connect to Heroku DB
   const webDomain = 'ebisu-shop.herokuapp.com';
 
   client = new Client({
-    user: 'opnawygbptmvff',
-    password: '7a8161cc5796b82d8d25b86214f487ed99d3bb1f2779775851f1e986a7a7febd',
-    database: 'df8sv1oc3dah9a',
-    host: 'ec2-176-34-215-248.eu-west-1.compute.amazonaws.com',
+    user: 'aatalgtbvfrlrq',
+    password: 'b04512ee8d6ce063fd5475a62803a54eb3d8a80367aaf6ef439ac2bde9cbe5b5',
+    database: 'd95s8kls19iki7',
+    host: 'ec2-46-51-187-237.eu-west-1.compute.amazonaws.com',
     port: 5432,
     ssl: {
       rejectUnauthorized: false
