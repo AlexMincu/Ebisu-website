@@ -27,11 +27,7 @@ if(process.env.HEROKU_ON) { // Connect to Heroku DB
   const webDomain = 'ebisu-shop.herokuapp.com';
 
   client = new Client({
-    user: 'aatalgtbvfrlrq',
-    password: 'b04512ee8d6ce063fd5475a62803a54eb3d8a80367aaf6ef439ac2bde9cbe5b5',
-    database: 'd95s8kls19iki7',
-    host: 'ec2-46-51-187-237.eu-west-1.compute.amazonaws.com',
-    port: 5432,
+    connectionString: process.env.DATABASE_URL,
     ssl: {
       rejectUnauthorized: false
     }
