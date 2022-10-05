@@ -112,6 +112,7 @@
             &__text {
               color: $clr-light-accent;
             }
+
             &__icon {
               transform: rotate(90deg);
             }
@@ -183,12 +184,14 @@
         height: 100%;
       }
     }
+
     @keyframes hideSubmenu {
       from {
         opacity: 100%;
         transform: translateX(0);
         height: 100%;
       }
+
       to {
         transform: translateX(-100%);
         opacity: 0;
@@ -210,6 +213,7 @@
     &__btn--hamburger {
       display: none;
     }
+
     &__nav {
       all: unset;
 
@@ -265,6 +269,7 @@
               transition: transform 300ms ease-in-out;
             }
           }
+
           &:hover {
             .header__menu__nav__list__item__content::after {
               transform: scaleX(100%);
