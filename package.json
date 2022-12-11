@@ -32,7 +32,6 @@
     "serve": "nodemon app.js",
     "devStart": "npm-run-all --parallel watch serve",
     "build:sass": "sass  --no-source-map assets/scss/main.scss:assets/css/main.css",
-    "build:postbuild": "postcss assets/css/*.css -u autoprefixer cssnano -r --no-map",
     "build": "npm-run-all --parallel build:*",
     "start": "node app.js"
   },

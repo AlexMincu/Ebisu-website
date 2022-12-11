@@ -21,10 +21,10 @@ const { Client } = require('pg');
 const { text, query } = require('express');
 let client;
 
-if(process.env.HEROKU_ON) { // Connect to Heroku DB
+if(process.env.RENDER_ON) { // Connect to Heroku DB
 
   const webProtocol = 'https://';
-  const webDomain = 'ebisu-shop.herokuapp.com';
+  const webDomain = 'ebisu.onrender.com';
 
   client = new Client({
     connectionString: process.env.DATABASE_URL,
